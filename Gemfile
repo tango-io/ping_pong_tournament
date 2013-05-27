@@ -14,6 +14,7 @@ gem 'compass-rails', github: 'milgner/compass-rails', ref: '1749c06f15dc4b058427
 gem 'angularjs-rails'
 gem 'decent_exposure'
 gem 'rspec'
+gem 'rspec-rails'
 
 group :doc do
   gem 'sdoc', require: false
