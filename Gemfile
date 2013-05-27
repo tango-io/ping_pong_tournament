@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.0.1'
 gem 'susy'
 gem 'haml-rails'
+gem 'compass-rails', github: 'milgner/compass-rails', ref: '1749c06f15dc4b058427e7969810457213647fb8'
 
 group :doc do
   gem 'sdoc', require: false
