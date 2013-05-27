@@ -14,8 +14,7 @@
 ActiveRecord::Schema.define(version: 20130527183040) do
 
   create_table "rounds", force: true do |t|
-    t.integer  "round"
-    t.integer  "round_position"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

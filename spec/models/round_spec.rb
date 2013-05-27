@@ -1,32 +1,38 @@
 require 'spec_helper'
 
 describe Round do
-  context "Since the beginig ther must be" do
-    it "4 rounds" do
-      number_of_rounds = Round.all.map(&:round).uniq.count
-      number_of_rounds.should == 4
+  context "should have" do
+    it "have a name" do
+      round = Round.create
+      round.errors[:name].should include("can't be blank")
     end
 
-    context "each round must have" do
-      it "16 places" do
-        round_positions = Round.first.count
-        round_positions.should == 16
-      end
+    it "accept a valid name" do
+      round = Round.create(name: 'champion')
+      round.errors[:name].should include("is not included in the list")
+    end
 
-      it "8 places" do
-        round_positions = Round.second.count
-        round_positions.should == 8
-      end
+    it "4 rounds" do
+      number_of_rounds = Round.all.count
+      number_of_rounds.should == 4
+    end
+  end
 
-      it "4 places" do
-        round_positions = Round.third.count
-        round_positions.should == 4 
-      end
+  context "respond to name" do
+    it "round of 16" do
+      Round.round_of_16.count.should == 1
+    end
 
-      it "2 places" do
-        round_positions = Round.fourth.count
-        round_positions.should ==  2
-      end
+    it "quarters" do
+      Round.quarters.count.should == 1
+    end
+
+    it "semifinal" do
+      Round.semifinal.count.should == 1
+    end
+
+    it "final" do
+      Round.final.count.should == 1
     end
   end
 
