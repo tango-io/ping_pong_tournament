@@ -12,6 +12,8 @@ gem 'susy'
 gem 'haml-rails'
 gem 'compass-rails', github: 'milgner/compass-rails', ref: '1749c06f15dc4b058427e7969810457213647fb8'
 gem 'angularjs-rails'
+gem 'decent_exposure'
+gem 'rspec'
 
 group :doc do
   gem 'sdoc', require: false
