@@ -15,6 +15,8 @@ gem 'angularjs-rails'
 gem 'decent_exposure'
 gem 'rspec'
 gem 'rspec-rails'
+gem 'pry'
+gem 'database_cleaner'
 
 group :doc do
   gem 'sdoc', require: false
