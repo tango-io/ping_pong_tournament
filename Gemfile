@@ -17,6 +17,7 @@ gem 'rspec'
 gem 'rspec-rails'
 gem 'pry'
 gem 'database_cleaner'
+gem 'factory_girl_rails'
 
 group :doc do
   gem 'sdoc', require: false
