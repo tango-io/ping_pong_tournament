@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api::MatchController do
+describe Api::RoundController do
   it "should give the list of matches for a round" do
     @expected_matches = { matches: MatchRound.where(number: 1).shift.matches }.to_json
     get :show, id: 1, format: :json
