@@ -14,6 +14,10 @@ gem 'compass-rails', github: 'milgner/compass-rails', ref: '1749c06f15dc4b058427
 gem 'angularjs-rails'
 gem 'decent_exposure'
 
+group :development do
+  gem 'pry'
+end
+
 group :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
