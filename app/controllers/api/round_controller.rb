@@ -1,4 +1,4 @@
-class Api::MatchController < ApplicationController
+class Api::RoundController < ApplicationController
   def show
     @matches = MatchRound.where(number: params[:id]).shift.matches
 
