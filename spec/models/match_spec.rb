@@ -9,7 +9,7 @@ describe Match do
 
   context "should have" do
     it "a position" do
-      @match.should_not be_nil
+      @match.match_number.should_not be_nil
     end
 
     it "3 sets once it start" do
