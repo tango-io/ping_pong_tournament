@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20130527220751) do
     t.string   "name"
     t.string   "type_account"
     t.string   "user_account"
+    t.string   "email"
     t.string   "picture_url"
     t.integer  "team_id"
     t.datetime "created_at"
