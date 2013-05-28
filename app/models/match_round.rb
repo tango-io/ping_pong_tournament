@@ -5,8 +5,8 @@ class MatchRound < ActiveRecord::Base
 
   has_many :matches
 
-  scope :round_of_16, -> { where(name: 'round of 16').shift }
-  scope :semifinal,   -> { where(name: 'semifinal').shift }
-  scope :quarters,    -> { where(name: 'quarters').shift }
-  scope :final,       -> { where(name: 'final').shift }
+  scope :round_of_16, -> { find_by(name: 'round of 16') }
+  scope :semifinal,   -> { find_by(name: 'semifinal') }
+  scope :quarters,    -> { find_by(name: 'quarters') }
+  scope :final,       -> { find_by(name: 'final') }
 end
