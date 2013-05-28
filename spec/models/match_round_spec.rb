@@ -1,18 +1,18 @@
 require 'spec_helper'
 
 describe MatchRound do
-  context "should have" do
+  context "should" do
     it "have a name" do
       round = MatchRound.create
       round.errors[:name].should include("can't be blank")
     end
 
-    it "accept a valid name" do
+    it "not accept an invalid name" do
       round = MatchRound.create(name: 'champion')
       round.errors[:name].should include("is not included in the list")
     end
 
-    it "4 rounds" do
+    it "have 4 rounds" do
       number_of_rounds = MatchRound.all.count
       number_of_rounds.should == 4
     end

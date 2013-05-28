@@ -6,17 +6,15 @@ describe Score do
     @score = @set.scores.create(total: 7)
   end
 
-  context "should" do
-    it "have a score" do
-      @score.total.should == 7
-    end
+  it "should have a score" do
+    @score.total.should == 7
+  end
 
-    it "have a relation with a set " do
-      @score.match_set.should_not be_nil
-    end
+  it "should have a relation with a set " do
+    @score.match_set.should_not be_nil
+  end
 
-    it "belong to a team" do
-      pending
-    end
+  it "belongs to a team" do
+    pending
   end
 end
