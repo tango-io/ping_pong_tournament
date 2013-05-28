@@ -1,9 +1,9 @@
 class Api::RoundController < ApplicationController
-  def show
-    @matches = MatchRound.where(number: params[:id]).shift.matches
+  expose(:matches) { MatchRound.find_by(number: params[:id]).matches }
 
+  def show
     respond_to do | format |
-      format.json { render json: { matches: @matches } }
+      format.json { render json: { matches: matches } }
     end
   end
 end

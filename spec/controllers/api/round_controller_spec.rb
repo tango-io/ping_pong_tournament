@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Api::RoundController do
   it "should give the list of matches for a round" do
-    @expected_matches = { matches: MatchRound.where(number: 1).shift.matches }.to_json
+    @expected_matches = { matches: MatchRound.find_by(number: 1).matches }.to_json
     get :show, id: 1, format: :json
     response.body.should == @expected_matches
   end
