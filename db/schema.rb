@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20130527220751) do
     t.string   "type_account"
     t.string   "user_account"
     t.string   "email"
-    t.string   "picture_url"
+    t.string   "picture_url",  default: "no picture"
     t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20130527220751) do
 
   create_table "teams", force: true do |t|
     t.string   "name"
-    t.string   "picture"
+    t.string   "picture",    default: "no picture"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
