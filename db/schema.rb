@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20130528074706) do
 
   create_table "match_rounds", force: true do |t|
     t.string   "name"
+    t.integer  "number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
