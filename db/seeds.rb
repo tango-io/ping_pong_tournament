@@ -6,10 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-MatchRound.create(name: 'round of 16')
-MatchRound.create(name: 'quarters')
-MatchRound.create(name: 'semifinal')
-MatchRound.create(name: 'final')
+MatchRound.create(name: 'round of 16', number: 1)
+MatchRound.create(name: 'quarters', number: 2)
+MatchRound.create(name: 'semifinal', number: 3)
+MatchRound.create(name: 'final', number: 4)
 
 @matches = 8 
 MatchRound.all.each do | round |
