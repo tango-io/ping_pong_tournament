@@ -11,10 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130527183040) do
+ActiveRecord::Schema.define(version: 20130528045150) do
 
-  create_table "rounds", force: true do |t|
+  create_table "match_rounds", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "match_sets", force: true do |t|
+    t.integer  "match_id"
+    t.integer  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "matches", force: true do |t|
+    t.integer  "match_number"
+    t.integer  "match_round_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "scores", force: true do |t|
+    t.integer  "total"
+    t.integer  "match_set_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
