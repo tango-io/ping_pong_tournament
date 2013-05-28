@@ -3,23 +3,22 @@ require 'spec_helper'
 describe Match do
 
   before(:each) do
+    @match = Match.first
+    2.times { @match.team_matches.create }
   end
 
   context "should have" do
     it "a position" do
-      Match.where(match_number: 1).should_not be_nil
+      @match.should_not be_nil
     end
 
-    it "3 sets once the started" do
-      Match.first.match_sets.count.should == 3
-    end
-
-    it "2 teams involved" do
-      pending
+    it "3 sets once it start" do
+      @match.start
+      @match.match_sets.count.should == 3
     end
 
     it "one round" do
-      Match.first.match_round.should == MatchRound.round_of_16
+      @match.match_round.should == MatchRound.round_of_16
     end
   end
 
