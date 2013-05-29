@@ -7,11 +7,11 @@ class Match < ActiveRecord::Base
   has_and_belongs_to_many :teams
 
   def start
-    if self.teams.count == 2
-      3.times { |n| self.sets.create( set_number: n + 1 ) }
-      self.sets.each do |set|
-        set.scores.create(team: self.teams.first)
-        set.scores.create(team: self.teams.last)
+    if teams.count == 2
+      3.times { |n| sets.create( set_number: n + 1 ) }
+      sets.each do |set|
+        set.scores.create(team: teams.first)
+        set.scores.create(team: teams.last)
       end
     end
   end
