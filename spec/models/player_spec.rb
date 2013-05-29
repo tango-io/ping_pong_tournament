@@ -16,7 +16,7 @@ describe Player do
 
 
   describe "a valid player" do
-    let(:player) { FactoryGirl.build(:player, picture_url: { small: "profile_picture_small.png", normal: "profile_picture_normal.png", big: "profile_picture_big.png"}) }
+    let(:player) { FactoryGirl.build(:player) }
 
     it "should get the profile picture url when you called the method picture_url" do
       player.picture_url[:small].should  == "profile_picture_small.png"
