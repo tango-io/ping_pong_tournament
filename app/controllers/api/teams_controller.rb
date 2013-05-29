@@ -4,11 +4,11 @@ class Api::TeamsController < ApplicationController
   expose(:team)
 
   def index
-    respond_with teams: teams
+    render json: teams
   end
 
   def show
-    respond_with team: team
+    respond_with team: team, players: team.players
   end
 
   def create
