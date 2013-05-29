@@ -16,4 +16,20 @@ class Match < ActiveRecord::Base
       end
     end
   end
+
+  def match_winner
+    team_1 = { team: teams.first, wins: 0 }
+    team_2 = { team: teams.last,  wins: 0 }
+
+    match_sets.each do | set |
+      if team_1[:team] == set.winner
+        team_1[:wins] += 1
+      elsif team_2[:team] == set.winner
+        team_2[:wins] += 1
+      end
+    end
+
+    return team_1[:team] if team_1[:wins] == 2
+    return team_2[:team]
+  end
 end
