@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Score do
   before(:each) do
-    @set = Match.first.match_sets.create(set_number: 1)
+    @set = Match.first.sets.create(set_number: 1)
     @score = @set.scores.create(total: 7)
   end
 

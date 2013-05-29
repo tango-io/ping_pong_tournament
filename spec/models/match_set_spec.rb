@@ -5,7 +5,7 @@ describe MatchSet do
 
   before(:each) do
     match.start
-    @set = match.match_sets.first
+    @set = match.sets.first
   end
 
   context "should have" do
@@ -15,7 +15,7 @@ describe MatchSet do
 
     it "a winner team" do
       team = match.teams.first
-      set = match.match_sets.first
+      set = match.sets.first
 
       set.scores.first.update_attributes(total: 11)
       set.scores.last.update_attributes(total: 3)

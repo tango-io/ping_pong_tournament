@@ -9,4 +9,7 @@ class MatchRound < ActiveRecord::Base
   scope :semifinal,   -> { find_by(name: 'semifinal') }
   scope :quarters,    -> { find_by(name: 'quarters') }
   scope :final,       -> { find_by(name: 'final') }
+
+  def advance_from_round
+  end
 end
