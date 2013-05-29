@@ -2,9 +2,13 @@ require 'spec_helper'
 
 describe Match do
 
-  before(:each) do
+  before do
     @match = Match.first
-    2.times { @match.team_matches.create }
+    for n in 1..2 do
+      team = FactoryGirl.build(:team, id: n, picture: { small: "team_picture_small.png", normal: "team_picture_normal.png", big: "team_picture_big.png"})
+      team.matches << @match
+      team.save
+    end
   end
 
   context "should have" do
