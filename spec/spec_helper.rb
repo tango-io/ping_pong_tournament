@@ -17,6 +17,8 @@ RSpec.configure do |config|
 
   config.order = "random"
 
+  config.render_views = true
+
 # DatabaseCleaner.strategy = :truncation
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
