@@ -1,5 +1,7 @@
 class Api::TeamsController < ApplicationController
-  respond_to :json, :xml    
+  layout false
+  respond_to :json
+
   expose(:teams)
   expose(:team)
 
@@ -8,7 +10,6 @@ class Api::TeamsController < ApplicationController
   end
 
   def show
-    respond_with team: team, players: team.players
   end
 
   def create

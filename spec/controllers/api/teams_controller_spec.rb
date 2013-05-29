@@ -2,14 +2,13 @@ require 'spec_helper'
 
 describe Api::TeamsController do
 
-  describe "team requests" do
-    let(:team) { FactoryGirl.build(:team) }
+  describe "team json requests" do
+    let(:team) { FactoryGirl.create(:team) }
 
-    it "returns the team with the id specified" do
-      team.save
-      @team = { team: Team.last, players: Team.last.players }.to_json
-      get :show, id: 1, format: :json
-      response.body.should == @team
+    it "returns a team" do
+      get :show, { :id => team.id, :format => :json, team: team}
+
+      response.body.should == { team: team }.to_json
     end
 
     it "returns the correct message when a team was created" do
