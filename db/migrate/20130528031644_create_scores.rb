@@ -3,6 +3,7 @@ class CreateScores < ActiveRecord::Migration
     create_table :scores do |t|
       t.integer :total,   :default => 0
       t.integer :match_set_id
+      t.integer :team_id
 
       t.timestamps
     end
