@@ -13,7 +13,7 @@ describe Team do
   end
 
   describe "creation of a valid team" do
-    let(:team) { FactoryGirl.build(:team, picture: { small: "team_picture_small.png", normal: "team_picture_normal.png", big: "team_picture_big.png"}) }
+    let(:team) { FactoryGirl.build(:team) }
 
     it "should return the name of the team" do
       team.save.should be_true
@@ -22,7 +22,7 @@ describe Team do
   end
 
   describe "a valid team with multiple players on it" do
-    let(:team) { FactoryGirl.create(:team, picture: { small: "team_picture_small.png", normal: "team_picture_normal.png", big: "team_picture_big.png"}) }
+    let(:team) { FactoryGirl.create(:team) }
 
     it "should return the players related with the team" do
       team.players.first.name.should == Player.first.name

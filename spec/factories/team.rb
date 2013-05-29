@@ -1,7 +1,12 @@
 FactoryGirl.define do 
   factory :team, :class => Team do |p|
     name "Test"
-    players {[ FactoryGirl.build(:player, picture_url: { small: "profile_picture_small.png", normal: "profile_picture_normal.png", big: "profile_picture_big.png"}) ]}
+    picture {{
+      small:  "team_picture_small.png",
+      normal: "team_picture_normal.png",
+      big:    "team_picture_big.png"
+    }}
+    players {[ FactoryGirl.build(:player), FactoryGirl.build(:player) ]}
   end
 end
 
