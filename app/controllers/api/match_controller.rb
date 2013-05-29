@@ -1,6 +1,4 @@
-class Api::MatchController < ApplicationController
-  layout "json_layout"
-
+class Api::MatchController < ApiController
   expose(:match)
 
   def show
