@@ -3,5 +3,6 @@ Pinpong::Application.routes.draw do
 
   namespace :api do
     resources :round, only: [ :show ]
+    resources :match, only: [ :show ]
   end
 end
