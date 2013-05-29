@@ -1,5 +1,5 @@
 class MatchRound < ActiveRecord::Base
-  validates_presence_of :name
+  validates_presence_of :name, :number
 
   validates :name, inclusion: %w(round\ of\ 16 quarters semifinal final)
 

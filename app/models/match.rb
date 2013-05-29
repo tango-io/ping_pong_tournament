@@ -11,9 +11,8 @@ class Match < ActiveRecord::Base
     if self.teams.count == 2
       3.times { |n| self.match_sets.create( set_number: n + 1 ) }
       self.match_sets.each do |set|
-        2.times { 
-          set.scores.create
-        }
+        set.scores.create(team: self.teams.first)
+        set.scores.create(team: self.teams.last)
       end
     end
   end
