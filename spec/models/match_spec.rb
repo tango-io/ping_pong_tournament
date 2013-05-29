@@ -2,8 +2,24 @@ require 'spec_helper'
 
 describe Match do
 
-  let(:round) { FactoryGirl.create(:round) }
-  let(:match) { FactoryGirl.create(:match, match_round: round ) }
+  let(:round)   { FactoryGirl.create(:round) }
+  let(:match)   { FactoryGirl.create(:match, round: round ) }
+
+  def first_team_wins_match match
+    match.start
+    sets = match.sets
+
+    sets[0].scores.first.update_attributes(total: 11)
+    sets[0].scores.last.update_attributes(total: 3)
+
+    sets[1].scores.first.update_attributes(total: 9)
+    sets[1].scores.last.update_attributes(total: 11)
+
+    sets[2].scores.first.update_attributes(total: 11)
+    sets[2].scores.last.update_attributes(total: 5)
+
+    sets.each { | set | set.set_winner }
+  end
 
   context "should have" do
     it "a position" do
@@ -12,33 +28,43 @@ describe Match do
 
     it "3 sets once it start" do
       match.start
-      match.match_sets.count.should == 3
+      match.sets.count.should == 3
     end
 
     it "a round" do
-      match.match_round.should == round
+      match.round.should == round
     end
 
     it "a winner team" do
-      match.start
-
       team = match.teams.first
-      sets = match.match_sets
 
-      sets[0].scores.first.update_attributes(total: 11)
-      sets[0].scores.last.update_attributes(total: 3)
-
-      sets[1].scores.first.update_attributes(total: 9)
-      sets[1].scores.last.update_attributes(total: 11)
-
-      sets[2].scores.first.update_attributes(total: 11)
-      sets[2].scores.last.update_attributes(total: 5)
-
-      sets.each { | set | set.set_winner }
+      first_team_wins_match match
 
       match.reload
       match.match_winner.should == team
     end
+  end
+
+  it "should take the winner team to the next round" do
+    match = MatchRound.round_of_16.matches.find_by(match_number: 5)
+    2.times do
+      match.teams << FactoryGirl.build(:team, picture: { small: "team_picture_small.png", normal: "team_picture_normal.png", big: "team_picture_big.png"})
+    end
+
+    team = match.teams.first
+
+    first_team_wins_match match
+    match.reload
+
+    winner = match.match_winner
+    next_round = MatchRound.quarters
+
+    included = false
+    next_round.matches.each do | match | 
+      included = true if match.teams.include?(winner)
+    end
+
+    included.should == true
   end
 
   context "should exist" do
