@@ -1,14 +1,13 @@
 class Api::TeamsController < ApplicationController
-  respond_to :json, :xml    
+  respond_to :json 
+
   expose(:teams)
   expose(:team)
 
   def index
-    render json: teams
   end
 
   def show
-    respond_with team: team, players: team.players
   end
 
   def create

@@ -7,9 +7,13 @@ describe Api::TeamsController do
 
     it "returns the team with the id specified" do
       team.save
-      @team = { team: Team.last, players: Team.last.players }.to_json
-      get :show, id: 1, format: :json
-      response.body.should == @team
+      puts team.inspect
+      #@team = { team: Team.last, players: Team.last.players }.to_json
+      Rabl::Renderer.json(team, 'api/teams/show', :view_path => 'app/views', :format => :json)
+
+      #get :show, id: 1, format: :json
+
+      #response.body.should == @team
     end
 
     it "returns the correct message when a team was created" do
