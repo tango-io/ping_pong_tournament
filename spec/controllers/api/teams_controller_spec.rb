@@ -5,7 +5,7 @@ describe Api::TeamsController do
   describe "team json requests" do
     let(:team) { FactoryGirl.build(:team) }
 
-    it "returns a team" do
+    it "returns a team with the id specified" do
       team.save
       get :show, { :id => team.id, :format => :json, team: team}
 
