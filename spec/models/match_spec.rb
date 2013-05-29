@@ -5,7 +5,7 @@ describe Match do
   before do
     @match = Match.first
     for n in 1..2 do
-      team = FactoryGirl.build(:team, id: n, picture: { small: "team_picture_small.png", normal: "team_picture_normal.png", big: "team_picture_big.png"})
+      team = FactoryGirl.build(:team, id: n)
       team.matches << @match
       team.save
     end
