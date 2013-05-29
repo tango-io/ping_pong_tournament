@@ -10,6 +10,12 @@ class Match < ActiveRecord::Base
   def start
     if self.teams.count == 2
       3.times { self.match_sets.create }
+      self.match_sets.each do |set|
+        2.times { 
+          set.scores.create
+          set.scores.create
+        }
+      end
     end
   end
 end
