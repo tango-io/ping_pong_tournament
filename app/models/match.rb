@@ -28,9 +28,11 @@ class Match < ActiveRecord::Base
       end
     end
 
-
+    winner = nil 
     winner = team_1[:team] if team_1[:wins] == 2
-    winner = team_2[:team]
+    winner = team_2[:team] if team_2[:wins] == 2
+
+    round.advance_from_round winner, match_number
 
     return winner
   end
