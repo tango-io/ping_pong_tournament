@@ -45,6 +45,12 @@ describe Match do
     end
   end
 
+  it "should set score for each match set" do
+    match.start
+    match.sets.first.scores.first.total.should == 0
+    match.sets.first.scores.last.total.should == 0
+  end
+
   it "should take the winner team to the next round" do
     match = MatchRound.round_of_16.matches.find_by(match_number: 5)
     2.times do
