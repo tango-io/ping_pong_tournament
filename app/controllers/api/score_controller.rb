@@ -1,4 +1,4 @@
-class Api::ScoreController < ApplicationController
+class Api::ScoreController < ApiController
   expose(:score)
 
   def update

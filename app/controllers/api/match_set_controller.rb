@@ -1,4 +1,3 @@
-class Api::MatchSetController < ApplicationController
+class Api::MatchSetController < ApiController
   expose(:match_set)
-
 end
