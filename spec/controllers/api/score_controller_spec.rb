@@ -5,7 +5,7 @@ describe Api::ScoreController do
 
   it "should set score for each match set" do
     match.start
-    set_score = match.match_sets.first.scores.first
+    set_score = match.sets.first.scores.first
 
     put :update, id: set_score.id, total: 11, format: :json
 

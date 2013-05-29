@@ -5,8 +5,8 @@ describe Api::MatchController do
 
   it "should set score for each match set" do
     match.start
-    match.match_sets.first.scores.first.total.should == 0
-    match.match_sets.first.scores.last.total.should == 0
+    match.sets.first.scores.first.total.should == 0
+    match.sets.first.scores.last.total.should == 0
   end
 
 end
