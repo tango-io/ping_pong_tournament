@@ -7,9 +7,8 @@ describe Api::TeamsController do
 
     it "returns the team with the id specified" do
       team.save
-      @team = { team: Team.find_by(id: 1) }.to_json
+      @team = { team: Team.last, players: Team.last.players }.to_json
       get :show, id: 1, format: :json
-
       response.body.should == @team
     end
 
