@@ -1,35 +1,53 @@
 @import 'susy'
 @import 'defaults'
 
+a
+  text-decoration: none
+  color: black
+  &:hover
+    color: gray
+
 header
 
   .header-titles-container
+    background-image: url('/assets/header-bg.jpg')
+    height: 81px
     padding: 0 30px
-    overflow: auto
 
-    h1
+    .logo 
       float: left
+      height: 50%
+      margin-top: 12px
+      +at-breakpoint($mobile)
+        height: 80%
 
     .hash-tag
+      color: white
+      font-size: 8pt
       font-weight: bold
       float: left
       clear: both
       margin-top: 0px
       +at-breakpoint($mobile)
-        float: right
         clear: none
+        float: right
+        font-size: 14pt 
         margin-top: 30px
       
   nav ul
-    border-top: 2px solid gray 
-    border-bottom: 2px solid gray
-
+    background: #c7c7c7
+    border-bottom: 5px solid #ffb400
+    color: #022f55
+    -mozilla-margin-before: 0
+    -webkit-margin-before: 0
+    -o-margin-before: 0
     li
-      list-style: none
       display: block
+      font-weight: bold
+      list-style: none
+      padding: 7px 10px 5px 10px
       +at-breakpoint($mobile)
         display: inline-block
-        padding: 5px 10px
 
 #content
   min-height: 400px
