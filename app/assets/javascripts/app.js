@@ -1,7 +1,7 @@
-var App = angular.module('App', [])
+var App = angular.module('App', ['ngResource'])
 
 App.config(['$routeProvider', function($routeProvider){
   $routeProvider.when('/round', {
-    templateUrl: 'register/index.html'
+    templateUrl: 'angular/round/index.html'
   });
 }]);
