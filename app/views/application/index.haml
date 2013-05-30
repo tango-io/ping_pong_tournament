@@ -1,7 +1,4 @@
-.mobile
-  hello worl from mobile
-.desktop
-  hello world from desktop
-
-%div{ ng_controller: "ApplicationIndexController" }
+%div(ng-controller="ApplicationIndexController")
+  %div(ng-view)
   {{message}}
+  %button(ng-click="navigate()") Sign up
