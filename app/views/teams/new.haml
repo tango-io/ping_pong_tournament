@@ -1,19 +1,21 @@
+= stylesheet_link_tag "teams/new"
 %form{ :action => '/api/teams', :method => "post"}
   %fieldset
     %ul
 
       .team
-        %h2 Team
-        %li
-          %label{:for  => "name"} Team Name:
-          %input{:type => "text", :name => "team[name]", :class => "text"}
-            
-        %li
-          %label{:for  => "picture"} Team Picture:
-          %input{:type => "file", :name => "team[picture]", :class => "text"}
+        .picture
+          =image_tag 'pads.jpg'
+        .info
+          %h2 Team
+          %li
+            %label{:for  => "name"} Team Name:
+            %input{:type => "text", :name => "team[name]", :class => "text"}
+          %li
+            %label{:for  => "picture"} Team Picture:
+            %input{:type => "file", :name => "team[picture]", :class => "text"}
 
       .players
-        %h2 Players
 
         .player1
           %h3 Player 1
@@ -29,7 +31,7 @@
             %input{:type => "text", :name => "team[players_attributes][player1][user_account]", :class => "user_account"}
 
         
-          %li
+          %li.last
             %label{:for  => "team[players_attributes][player1][email]"} Email:
             %input{:type => "text", :name => "team[players_attributes][player1][email]", :class => "email"}
         
@@ -47,7 +49,7 @@
             %label{:for  => "team[players_attributes][player2][user_account]"} User account:
             %input{:type => "text", :name => "team[players_attributes][player2][user_account]", :class => "user_account"}
         
-          %li
+          %li.last
             %label{:for  => "team[players_attributes][player2][email]"} Email:
             %input{:type => "text", :name => "team[players_attributes][player2][email]", :class => "email"}
         
