@@ -1,6 +1,4 @@
-class Api::TeamsController < ApplicationController
-  layout false
-
+class Api::TeamsController < ApiController
   expose(:teams)
   expose(:team)
 
