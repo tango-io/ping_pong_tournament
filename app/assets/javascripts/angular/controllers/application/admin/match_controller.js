@@ -35,8 +35,11 @@ App.controller('AdminMatchController', ['$scope', '$http', '$location', '$routeP
     });
   }).call(this);
 
+  $scope.deleteTeam = function(id){
+    $http.delete('api/teams/'+id);
+  };
+
   $scope.updateScore = function(id, score){
-    console.log(id);
-    console.log(score);
+    $http.put('api/score/'+id, { total: score });
   };
 }]);
