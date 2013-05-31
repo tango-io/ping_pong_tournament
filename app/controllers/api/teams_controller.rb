@@ -16,11 +16,13 @@ class Api::TeamsController < ApplicationController
   def create
     match = MatchRound.round_of_16.available_matches.sample
     team = Team.new(team_params)
-    if team.save
-      match.teams << team
-      render json: { message: "The Team was successfully created"}
+    if team.valid_team
+      if team.save
+        match.teams << team
+        redirect_to "#/round/1"
+      end
     else
-      render json: { message: "The Team was not created"}
+      redirect_to :back
     end
   end
 
@@ -32,13 +34,13 @@ class Api::TeamsController < ApplicationController
 
   private
   def team_params
-    params.require(:team).permit(:name, :picture, players_attributes: [:name, :type_account, :user_account, :email, :picture_url])
+    params.require(:team).permit(:name, :picture, players_attributes: [:type_account, :user_account, :email, :picture_url])
   end
 
   def fix_params_from_for
-    if params[:team][:players_attributes].first.class == "Array"
-    p = params["team"]["players_attributes"].to_a
-    params["team"][:players_attributes] = [p[0][1], p[1][1]]
+    if params[:team][:players_attributes].first.class == Array
+      p = params["team"]["players_attributes"].to_a
+      params["team"][:players_attributes] = [p[0][1], p[1][1]]
     end
   end
 
