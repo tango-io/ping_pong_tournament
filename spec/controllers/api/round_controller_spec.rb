@@ -8,10 +8,10 @@ describe Api::RoundController do
       team_array = [] 
 
       match.teams.each do | team |
-        temp = { team: { id: team.id,
+        temp = { id: team.id,
           name: team.name,
           picture: {:small=>"team_picture_small.png", :normal=>"team_picture_normal.png", :big=>"team_picture_big.png"}
-        }}
+        }
 
         team_array << temp
       end
@@ -36,12 +36,10 @@ describe Api::RoundController do
       end
     end
 
-    expected_json = {
-      matches: create_json(round)
-    }.to_json
+    expected_json = create_json(round)
 
     get :show, id: round.id, format: :json
 
-    response.body.should == expected_json
+    response.body.should == expected_json.to_json
   end
 end
