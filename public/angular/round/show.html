@@ -1,0 +1,15 @@
+<div ng-controller="RoundController">
+  <ul>
+    <li ng-repeat="match in matches" ng-class="match.pair">
+    <div ng-repeat="team in match.teams" ng-class="{'second': $index, 'first': !$index }" ng-click="showTeam(team.id)">
+      <span>
+        <img src="/temp_ico.png"/>
+        <!--<img src="{{ team.picture || '/temp_ico.png' }}"/>-->
+      </span>
+      <span>
+        {{team.name}}
+      </span>
+    </div>
+    </li>
+  </ul>
+</div>
