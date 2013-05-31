@@ -1,6 +1,5 @@
 Pinpong::Application.routes.draw do
   root to: "application#index"
-  resources :round, only: :index
 
   namespace :api do
     resources :round,       only: [ :show ]
