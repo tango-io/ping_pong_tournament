@@ -1,4 +1,4 @@
-var App = angular.module('App', ['ngResource'])
+var App = angular.module('PingPong', ['ngResource'])
 
 App.config(['$routeProvider', function($routeProvider){
   $routeProvider.
