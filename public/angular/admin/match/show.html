@@ -3,6 +3,8 @@
     Manage match
   </span>
   <div ng-repeat="team in match.teams">
+    <span ng-click="deleteTeam(team.id)">
+      Delete team!
     <span>
       <img src="/temp_team_large.png"/>
       <!--<img src="{{ team.picture || '/temp_ico_large.png' }}"/>-->

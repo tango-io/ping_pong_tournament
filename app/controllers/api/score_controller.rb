@@ -2,6 +2,7 @@ class Api::ScoreController < ApiController
   expose(:score)
 
   def update
+    binding.pry
     score.update_attributes(total: params[:total])
 
     if score.save
