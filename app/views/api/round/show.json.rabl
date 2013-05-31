@@ -1,3 +1,8 @@
-collection matches, :root => "matches"
+collection matches
 attributes :id, :match_number
-child(:teams) { attributes :id, :name, :picture }
+child :teams, :object_root => false do
+  attributes :id, :name, :picture 
+end
+node  :champion do |match|
+  match.have_winner
+end if matches.count == 1

@@ -17,6 +17,13 @@ class Match < ActiveRecord::Base
   end
 
   def match_winner
+    winner = have_winner
+
+    round.advance_from_round winner, match_number
+    return winner
+  end
+
+  def have_winner
     team_1 = { team: teams.first, wins: 0 }
     team_2 = { team: teams.last,  wins: 0 }
 
@@ -31,8 +38,6 @@ class Match < ActiveRecord::Base
     winner = nil 
     winner = team_1[:team] if team_1[:wins] == 2
     winner = team_2[:team] if team_2[:wins] == 2
-
-    round.advance_from_round winner, match_number
 
     return winner
   end
