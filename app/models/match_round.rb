@@ -9,4 +9,10 @@ class MatchRound < ActiveRecord::Base
   scope :semifinal,   -> { find_by(name: 'semifinal') }
   scope :quarters,    -> { find_by(name: 'quarters') }
   scope :final,       -> { find_by(name: 'final') }
+
+
+  def available_matches
+    matches.reject{ |m| m.teams.size >= 2 }
+  end
+
 end
