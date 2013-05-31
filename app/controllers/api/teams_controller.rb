@@ -1,5 +1,4 @@
-class Api::TeamsController < ApplicationController
-  layout false
+class Api::TeamsController < ApiController
   skip_before_filter :verify_authenticity_token
   before_filter :fix_params_from_for, only: :create
 
