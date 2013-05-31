@@ -37,7 +37,6 @@ header
   nav ul
     background: #c7c7c7
     border-bottom: 5px solid #ffb400
-    color: #022f55
     -mozilla-margin-before: 0
     -webkit-margin-before: 0
     -o-margin-before: 0
@@ -48,6 +47,10 @@ header
       padding: 7px 10px 5px 10px
       +at-breakpoint($mobile)
         display: inline-block
+    a
+      color: #022f55
+    a:hover
+      color: lighten(#022f55, 20%)
 
 #content
   min-height: 400px
