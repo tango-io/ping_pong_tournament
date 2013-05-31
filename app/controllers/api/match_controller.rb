@@ -1,9 +1,6 @@
-class Api::MatchController < ApplicationController
-  def show
-    @match = Match.find(1)
+class Api::MatchController < ApiController
+  expose(:match)
 
-    respond_to do | format |
-      format.json { render json: { match: @match } }
-    end
+  def show
   end
 end
