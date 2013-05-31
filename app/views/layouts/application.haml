@@ -1,9 +1,29 @@
 !!!
 %html{ "ng-app" => "App" }
   %head
-    %title Pinpong
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    %title TangoPong 
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag "application/index"
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    = yield
+    %header
+    
+      .header-titles-container
+        =image_tag 'tango-pong-logo.png', class: 'logo'
+        %div.hash-tag #someHashTag
+    
+      %nav
+        %ul
+          %li
+            =link_to 'Teams', 'application#teams'
+          %li
+            =link_to 'Scores', 'application#scores'
+          %li
+            =link_to 'Rules', 'application#rules'
+    
+    #content
+      = yield
+    
+    %footer
+      %p < Playing ping pong at #someHashTag tournament #{link_to 'http://bit.ly/as893fs3', 'http://bit.ly/as893fs3'} >
