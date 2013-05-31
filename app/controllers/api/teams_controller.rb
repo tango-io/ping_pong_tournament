@@ -1,7 +1,7 @@
 class Api::TeamsController < ApplicationController
   layout false
   skip_before_filter :verify_authenticity_token
-  before_filter :fix_params_from_for, :only => [:create]
+  before_filter :fix_params_from_for, only: :create
 
   expose(:teams)
   expose(:team)
@@ -16,11 +16,9 @@ class Api::TeamsController < ApplicationController
   def create
     match = MatchRound.round_of_16.available_matches.sample
     team = Team.new(team_params)
-    if team.valid_team
-      if team.save
+    if team.valid_team? && team.save
         match.teams << team
         redirect_to "#/round/1"
-      end
     else
       redirect_to :back
     end
@@ -34,13 +32,24 @@ class Api::TeamsController < ApplicationController
 
   private
   def team_params
-    params.require(:team).permit(:name, :picture, players_attributes: [:type_account, :user_account, :email, :picture_url])
+    params.require(:team).permit(
+      :name, 
+      :picture, 
+      players_attributes: [
+        :type_account, 
+        :user_account, 
+        :email, 
+        :picture_url
+      ]
+    )
   end
 
   def fix_params_from_for
     if params[:team][:players_attributes].first.class == Array
-      p = params["team"]["players_attributes"].to_a
-      params["team"][:players_attributes] = [p[0][1], p[1][1]]
+      players_attributes = params["team"]["players_attributes"].to_a
+      p1_attributes      = players_attributes.first.last
+      p2_attributes      = players_attributes.last.last
+      params["team"][:players_attributes] = [p1_attributes, p2_attributes]
     end
   end
 

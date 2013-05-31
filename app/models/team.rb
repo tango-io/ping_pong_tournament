@@ -9,7 +9,7 @@ class Team < ActiveRecord::Base
 
   accepts_nested_attributes_for :players
 
-  def valid_team
+  def valid_team?
     valid = []
     players.each do |player|
       valid << player.is_valid?

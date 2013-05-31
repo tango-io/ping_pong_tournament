@@ -1,8 +1,8 @@
-%form{ :action => '/api/teams', :method => "post", ng_app: ""}
+%form{ :action => '/api/teams', :method => "post"}
   %fieldset
     %ul
 
-      %div{ class: "team"}
+      .team
         %h2 Team
         %li
           %label{:for  => "name"} Team Name:
@@ -12,10 +12,10 @@
           %label{:for  => "picture"} Team Picture:
           %input{:type => "file", :name => "team[picture]", :class => "text"}
 
-      %div{ class: "players"}
+      .players
         %h2 Players
 
-        %div{ class: "player1", ng_controller: "PlayerController"}
+        .player1
           %h3 Player 1
         
           %li
@@ -26,8 +26,7 @@
         
           %li
             %label{:for  => "team[players_attributes][player1][user_account]"} User account:
-            %input{:type => "text", :name => "team[players_attributes][player1][user_account]", :class => "user_account", ng_model: "userName"}
-            %p(ng-show="valid") {{valid}}
+            %input{:type => "text", :name => "team[players_attributes][player1][user_account]", :class => "user_account"}
 
         
           %li
@@ -35,7 +34,7 @@
             %input{:type => "text", :name => "team[players_attributes][player1][email]", :class => "email"}
         
         
-        %div{ class: "player2"}
+        .player2
           %h3 Player 2
         
           %li
@@ -53,4 +52,4 @@
             %input{:type => "text", :name => "team[players_attributes][player2][email]", :class => "email"}
         
         
-        %input{:type => "submit", :value => "Send", :class => "button"}
+    %input{:type => "submit", :value => "Send", :class => "button"}
