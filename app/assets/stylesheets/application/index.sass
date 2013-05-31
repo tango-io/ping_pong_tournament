@@ -1,9 +1,9 @@
-@import 'susy'
-@import 'defaults'
+@import screen 
 
 a
-  text-decoration: none
   color: black
+  text-decoration: none
+
   &:hover
     color: gray
 
@@ -18,16 +18,18 @@ header
       float: left
       height: 50%
       margin-top: 12px
+
       +at-breakpoint($mobile)
         height: 80%
 
     .hash-tag
+      clear: both
       color: white
+      float: left
       font-size: 8pt
       font-weight: bold
-      float: left
-      clear: both
       margin-top: 0px
+
       +at-breakpoint($mobile)
         clear: none
         float: right
@@ -37,24 +39,26 @@ header
   nav ul
     background: #c7c7c7
     border-bottom: 5px solid #ffb400
-    -mozilla-margin-before: 0
-    -webkit-margin-before: 0
-    -o-margin-before: 0
+    margin: 0
+
     li
       display: block
       font-weight: bold
       list-style: none
       padding: 7px 10px 5px 10px
+
       +at-breakpoint($mobile)
         display: inline-block
+
     a
       color: #022f55
-    a:hover
-      color: lighten(#022f55, 20%)
+
+      &:hover
+        color: lighten(#022f55, 20%)
 
 #content
-  min-height: 400px
   border-bottom: 2px solid gray
+  min-height: 400px
 
 footer
   text-align: center
