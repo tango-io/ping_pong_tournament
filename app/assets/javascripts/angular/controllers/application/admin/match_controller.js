@@ -1,13 +1,21 @@
 App.directive('inputdisplay', function(){
   return function(scope, element, attr){
     element.bind('click', function(){
-      var target = element.next();
+      var target = element.next('.score_input');
+      $('.score_input').attr('style', 'display: none');
+      $('.score').attr('style', 'display: block');
+      element.attr('style', 'display: none;');
+      target.attr('style', 'display: block;');
+    })
+  }
+});
 
-      if(target.attr('style').match('display: none;')){
-        target.attr('style', 'display: block;');
-      } else {
-        target.attr('style', 'display: none;');
-      }
+App.directive('inputhide', function(){
+  return function(scope, element, attr){
+    element.bind('click', function(){
+      var target = element.parent();
+      target.attr('style', 'display: none;');
+      $('.score').attr('style', 'display: block');
     })
   }
 });
@@ -27,17 +35,8 @@ App.controller('AdminMatchController', ['$scope', '$http', '$location', '$routeP
     });
   }).call(this);
 
-  $scope.startMatch = function(id){
-    console.log(id);
-  };
-
   $scope.updateScore = function(id, score){
     console.log(id);
     console.log(score);
   };
-
-  //$scope.toggle = function(e){
-    //var elem = angular.element(e.srcElement);
-    //console.log(elem);
-  //}
 }]);

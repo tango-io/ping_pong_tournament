@@ -3,7 +3,6 @@
     Manage match
   </span>
   <div ng-repeat="team in match.teams">
-  <div>
     <span>
       <img src="/temp_team_large.png"/>
       <!--<img src="{{ team.picture || '/temp_ico_large.png' }}"/>-->
@@ -12,16 +11,15 @@
       {{team.name}}
     </span>
   </div>
-  </div>
   <div ng-repeat="set in match.sets">
     Set {{$index+1}}
     <div ng-repeat="score in set.scores">
-      <span inputdisplay >
+      <span inputdisplay class="score">
         {{score.total}}
       </span>
-      <div style="display: none;">
-        <input type="text" ng-model="score_total" />
-        <button ng-click="updateScore(score.id, score_total)">Done</button>
+      <div class="score_input" style="display: none;">
+        <input type="text" ng-model="score.total"/>
+        <button inputhide a="{{score.total}}" ng-click="updateScore(score.id, score.total)">Done</button>
       </div>
     </div>
   </div>
