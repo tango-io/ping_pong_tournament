@@ -5,4 +5,6 @@ Pinpong::Application.routes.draw do
     resources :round, only: [ :show ]
     resources :teams, defaults: {format: :json}
   end
+
+  resources :teams, only: [ :new ]
 end

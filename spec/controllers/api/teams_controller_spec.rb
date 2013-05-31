@@ -20,6 +20,8 @@ describe Api::TeamsController do
 
         JSON.parse(response.body)["message"].should == "The Team was successfully created"
         Team.last.players.count.should == 2
+        
+        Team.last.matches.last.match_round_id.should == 1
       end
 
       it "returns the correct message when a team was not created" do
