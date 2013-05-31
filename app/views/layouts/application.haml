@@ -8,6 +8,9 @@
     = csrf_meta_tags
   %body
     %header
+      - if user_signed_in?
+        Signed in as #{current_user.email}. Not you?
+        \#{link_to "Sign out", destroy_user_session_path, :method => :delete}
     
       .header-titles-container
         =image_tag 'tango-pong-logo.png', class: 'logo'

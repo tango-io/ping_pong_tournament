@@ -17,6 +17,7 @@ gem 'decent_exposure'
 gem 'rabl'
 gem 'twitter'
 gem "github_api"
+gem 'devise', '~> 3.0.0.rc'
 
 group :development do
   gem 'pry'
