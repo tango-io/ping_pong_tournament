@@ -1,4 +1,5 @@
 Pinpong::Application.routes.draw do
+  devise_for :users
   root to: "application#index"
 
   namespace :api do
