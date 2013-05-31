@@ -72,6 +72,9 @@ GEM
       multi_json (~> 1.4)
       nokogiri (~> 1.5.2)
       oauth2
+    gumby-framework (0.0.1)
+      jquery-rails
+      modernizr-rails
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -97,6 +100,7 @@ GEM
     method_source (0.8.1)
     mime-types (1.23)
     minitest (4.7.4)
+    modernizr-rails (2.6.2.2)
     multi_json (1.7.4)
     multi_xml (0.5.3)
     multipart-post (1.2.0)
@@ -198,6 +202,7 @@ DEPENDENCIES
   decent_exposure
   factory_girl_rails
   github_api
+  gumby-framework
   haml-rails
   jbuilder (~> 1.0.1)
   jquery-rails

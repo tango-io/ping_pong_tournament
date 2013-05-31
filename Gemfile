@@ -17,6 +17,7 @@ gem 'decent_exposure'
 gem 'rabl'
 gem 'twitter'
 gem "github_api"
+gem 'gumby-framework'
 
 group :development do
   gem 'pry'
