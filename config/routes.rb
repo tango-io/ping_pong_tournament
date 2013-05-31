@@ -8,4 +8,6 @@ Pinpong::Application.routes.draw do
     resources :score,       only: [ :update ]
     resources :teams,       defaults: {format: :json}
   end
+
+  resources :teams, only: [ :new ]
 end

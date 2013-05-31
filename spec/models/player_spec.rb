@@ -7,7 +7,6 @@ describe Player do
 
     it "should raise error if player name type_account and/or user_account is/are not defined" do
       player.save
-      player.errors[:name].should include("can't be blank")
       player.errors[:type_account].should include("can't be blank")
       player.errors[:user_account].should include("can't be blank")
     end

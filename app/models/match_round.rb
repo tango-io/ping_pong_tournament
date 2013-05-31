@@ -18,4 +18,9 @@ class MatchRound < ActiveRecord::Base
       next_match.teams << team if next_match.teams.count < 2
     end
   end
+
+  def available_matches
+    matches.reject{ |m| m.teams.size >= 2 }
+  end
+
 end
