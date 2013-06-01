@@ -1,20 +1,26 @@
 @import screen
 
-+layout(9)
++layout(5)
   #content
     +container
++at-breakpoint($mobile)
+  +layout(9)
+    #content
+      +container
 
 li
   list-style: none
 
 .team
   display: inline-block
+  +span-columns(5 omega, 5)
+  +at-breakpoint($mobile)
+    +span-columns(9 omega, 9)
 
   h2
     margin-bottom: 5px
 
   .picture
-    +span-columns(9 omega, 9)
     text-align: center
     img
       width: 200px
@@ -23,30 +29,28 @@ li
       +span-columns(2,9)
       img
         width: 125px
-        border: none
     
   .info
-    +span-columns(9 omega, 9)
+    +span-columns(5 omega, 5)
     margin: 0
-    padding-top: 15px
+    padding-top: 0px
     li
-      width: 100%
       label
-        +span-columns(2,9)
+        font-size: 10px !important
+        +span-columns(1, 5)
       input
+        width: 83% !important
         float: none !important
-        width: 79% !important
-        +span-columns(7 omega, 9)
+        +span-columns(4 omega, 5)
 
     +at-breakpoint($mobile)
       +span-columns(7 omega,9)
+      padding-top: 18px
+      label
+        +span-columns(2,9)
       input
         width: initial
-
-.players
-  h2
-    margin-bottom: 5px
-    margin-top: 10px
+        +span-columns(7 omega, 9)
 
 .player1, .player2
 
@@ -57,12 +61,12 @@ li
     display: block
 
   li
-    +span-columns(9 omega,9)
+    +span-columns(5 omega, 5)
     +at-breakpoint($mobile)
       +span-columns(6,9)
 
   li.last.field
-    +span-columns(9 omega,9)
+    +span-columns(5 omega,5)
     .picker
       width: 100%
     +at-breakpoint($mobile)
@@ -70,4 +74,9 @@ li
 
 form
   fieldset
+    padding: 0
     border: none
+    width: 100%
+
+.register-btn
+  +span-columns(5 omega, 5)
