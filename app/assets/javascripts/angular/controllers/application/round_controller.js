@@ -1,5 +1,10 @@
 App.controller('RoundController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
+  $scope.$on('something', function(event, id){
+    console.log(arguments);
+  });
+
   $scope.matches = [];
+  $scope.round = $location.path().split('/')[2];
   $scope.round = $routeParams.id || 4;
 
   $scope.showRound = (function(){
@@ -18,6 +23,10 @@ App.controller('RoundController', ['$scope', '$http', '$location', '$routeParams
     $location.path('team/'+id);
   };
 
+  $scope.showMatch = function(id){
+    $location.path('/match/'+id);
+  };
+
   $scope.nextMatch = function(id){
     var next_id = parseInt(id) + 1;
     if(next_id < 4){
@@ -25,6 +34,10 @@ App.controller('RoundController', ['$scope', '$http', '$location', '$routeParams
     } else {
       $location.path('round/final_match');
     }
+  };
+
+  $scope.deleteMatch= function(id){
+    console.log(id);
   };
 
   $scope.previousMatch = function(id){

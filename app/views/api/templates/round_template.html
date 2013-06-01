@@ -1,0 +1,32 @@
+<% admin = false %>
+<div ng-controller="RoundController">
+  Round {{round}}
+  <ul>
+    <li ng-repeat="match in matches" ng-class="match.pair">
+    <div class="ng-cloak">
+      <div ng-hide="match.empty" ng-repeat="team in match.teams" ng-class="{'second': $index, 'first': !$index }"
+        <% if admin %>
+          ng-click="showMatch(team.id)">
+        <% else %>
+          ng-click="showTeam(team.id)">
+        <% end%>
+        <span ng-click="deleteTEam(team.id)">
+          Delete team!
+        </span>
+        <span>
+          <img src="<%= image_path('temp_team.png') %>"/>s
+          <!--<img src="{{ team.picture || "<%= image_path('temp_team.png') %> }}"/>-->
+        </span>
+        <span>
+          {{team.name}}
+        </span>
+      </div>
+      <div ng-show="match.empty">
+        No teams available
+      </div>
+    </div>
+    </li>
+  </ul>
+  <button ng-hide="round_num == 1" ng-click="previousMatch(round)">Previous round</button>
+  <button ng-click="nextMatch(round)">Next round</button>
+</div>

@@ -6,7 +6,7 @@
       <div class="ng-cloak">
         <div ng-hide="match.empty" ng-repeat="team in match.teams" ng-class="{'second': $index, 'first': !$index }" ng-click="showTeam(team.id)">
           <span>
-            <img src="/temp_team.png"/>
+            <img src="<%= image_path('temp_team.png') %>"/>
             <!--<img src="{{ team.picture || '/temp_team.png' }}"/>-->
           </span>
           <span>
@@ -22,8 +22,8 @@
     <div class="ng-cloak">
       <div ng-hide="match.winner">
         <span>
-          <img src="/temp_team_large.png"/>
-          <!--<img src="{{ team.picture || '/temp_ico_large.png' }}"/>-->
+          <img src="<%= image_path('temp_team_large.png') %>"/>
+          <!--<img src="{{ team.picture || <%= image_path('temp_ico_large.png') %> }}"/>-->
         </span>
         <span>
           This is the champion
@@ -32,8 +32,8 @@
         <ul>
           <li ng-repeat="player in match.champion.players">
           <span>
-            <img src="/temp_user.png"/>
-            <!--<img src="{{ team.picture_url || '/temp_ico.png' }}"/>-->
+            <img src="<%= image_path('temp_user.png') %>"/>
+            <!--<img src="{{ team.picture_url || <%= image_path('temp_ico.png') %> }}"/>-->
           </span>
           <span>
             {{player.type_account}}
@@ -44,8 +44,8 @@
       </div>
     </div>
     <div ng-show="match.winner">
-      <img src="/temp_team_large.png"/>
-      <!--<img src="{{ team.picture || '/temp_team_large.png' }}"/>-->
+      <img src="<%= image_path('temp_team_large.png') %>"/>
+      <!--<img src="{{ team.picture || <%= image_path('temp_team_large.png') %> }}"/>-->
       There is no champion, yet!
     </div>
   </div>

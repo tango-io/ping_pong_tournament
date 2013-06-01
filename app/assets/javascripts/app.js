@@ -3,24 +3,19 @@ var App = angular.module('PingPong', ['ngResource'])
 App.config(['$routeProvider', function($routeProvider){
   $routeProvider.
     when('/round/final_match', {
-      templateUrl: 'angular/round/final_match.html'
+      controller: "TemplatesController",
+      templateUrl: 'api/templates/final_match'
     })
     .when('/round/:id', {
-      templateUrl: 'angular/round/show.html'
+      controller: "TemplatesController",
+      templateUrl: "api/templates/round"
     })
     .when('/team/:id', {
-      templateUrl: 'angular/team/show.html'
+      controller: "TemplatesController",
+      templateUrl: 'api/templates/team'
     })
-    .when('/admin/match/:id', {
-      templateUrl: 'angular/admin/match/show.html'
-    })
-    .when('/admin/team/:id', {
-      templateUrl: 'angular/admin/team/show.html'
-    })
-    .when('/admin/round/final_match', {
-      templateUrl: 'angular/admin/round/final_match.html'
-    })
-    .when('/admin/round/:id', {
-      templateUrl: 'angular/admin/round/show.html'
+    .when('/match/:id', {
+      controller: "TemplatesController",
+      templateUrl: 'api/templates/match'
     });
 }]);
