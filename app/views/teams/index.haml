@@ -34,7 +34,7 @@
     %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
     %h3.teamName
   .modal-body
-    %form{ :action => '/api/teams', :method => "post"}
+    %form{ :action => '/api/teams', :method => "post", enctype: "multipart/form-data" }
       %fieldset
         %ul
 

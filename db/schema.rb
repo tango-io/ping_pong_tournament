@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20130601220853) do
   end
 
   create_table "players", force: true do |t|
-    t.string   "name"
     t.string   "type_account"
     t.string   "user_account"
     t.string   "email"
