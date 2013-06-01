@@ -4,6 +4,7 @@
       %li.btn{"data-toggle" => "modal", :href => "#teamModal", :role => "button", "data-backdrop" => "false", ng_click: "fillModal(#{team.to_json}, #{team.players.to_json})" }
         %h2= team.name
         %label{:for  => "picture"} Team Picture:
+        %img{src: team.picture_url(:thumb) }
         %br
   %a.btn{"data-toggle" => "modal", :href => "#teamNewModal", :role => "button", "data-backdrop" => "false"}New team
 / Modal
@@ -11,6 +12,7 @@
   .modal-header
     %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
     %h2.teamName
+    %img.teamImage
   .modal-body
     .player
       %img.image

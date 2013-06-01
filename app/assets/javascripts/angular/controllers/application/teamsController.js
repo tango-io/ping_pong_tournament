@@ -2,9 +2,12 @@ App.controller('teamController', ['$scope', function($scope){
 
   $scope.fillModal = function(team, players){
     $team   = $("#teamModal .teamName");
+    $img    = $("#teamModal .teamImage");
     $player = $("#teamModal .player");
 
-    $team.text(team.name)
+    $team.text(team.name);
+    debugger
+    $img.attr('src', team.picture.thumb.url);
     $player.each(function(){
       player = players[$(this).index()];
       $(this).find(".user_account").text(player.user_account);

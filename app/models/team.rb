@@ -1,5 +1,4 @@
 class Team < ActiveRecord::Base
-  serialize  :picture
 
   validates_presence_of         :name
 
@@ -11,6 +10,8 @@ class Team < ActiveRecord::Base
 
   has_many                      :scores
   has_many                      :sets, class_name: 'MatchSet'
+
+  mount_uploader :picture, PictureUploader
 
   def valid_team?
     valid = []

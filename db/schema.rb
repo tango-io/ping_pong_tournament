@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130531191355) do
+ActiveRecord::Schema.define(version: 20130601220853) do
 
   create_table "match_rounds", force: true do |t|
     t.string   "name"
@@ -61,9 +61,9 @@ ActiveRecord::Schema.define(version: 20130531191355) do
 
   create_table "teams", force: true do |t|
     t.string   "name"
-    t.string   "picture",    default: "no picture"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "picture"
   end
 
   create_table "users", force: true do |t|
