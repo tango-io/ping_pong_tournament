@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20130531191355) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "match_rounds", force: true do |t|
     t.string   "name"
     t.integer  "number"
@@ -24,6 +21,7 @@ ActiveRecord::Schema.define(version: 20130531191355) do
   end
 
   create_table "match_sets", force: true do |t|
+    t.integer  "set_number"
     t.integer  "match_id"
     t.integer  "team_id"
     t.datetime "created_at"
@@ -43,6 +41,7 @@ ActiveRecord::Schema.define(version: 20130531191355) do
   end
 
   create_table "players", force: true do |t|
+    t.string   "name"
     t.string   "type_account"
     t.string   "user_account"
     t.string   "email"
