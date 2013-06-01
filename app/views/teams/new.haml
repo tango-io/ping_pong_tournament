@@ -4,54 +4,37 @@
     %ul
 
       .team
+
         .picture
-          =image_tag 'pads.jpg'
+          =image_tag 'pads.jpg', class: 'image rounded'
         .info
-          %h2 Team
-          %li
-            %label{:for  => "name"} Team Name:
-            %input{:type => "text", :name => "team[name]", :class => "text"}
-          %li
-            %label{:for  => "picture"} Team Picture:
-            %input{:type => "file", :name => "team[picture]", :class => "text"}
+          %li.prepend.field
+            %label.adjoined{:for  => "name"} Name
+            %input.xwide.text.input{:type => "text", :name => "team[name]", :class => "text"}
+          %li.prepend.field
+            %label.adjoined{:for  => "picture"} Picture
+            %input.xwide.text.input{:type => "file", :name => "team[picture]", :class => "text"}
 
       .players
-
+      
         .player1
-          %h3 Player 1
-        
-          %li
-            %label{:for  => "team[players_attributes][player1][type_account]"} Type account:
-            %select{:name => "team[players_attributes][player1][type_account]"}
-              %option{value: "twitter" }= "Twitter"
-              %option{value: "github"  }= "Github"
-        
-          %li
-            %label{:for  => "team[players_attributes][player1][user_account]"} User account:
-            %input{:type => "text", :name => "team[players_attributes][player1][user_account]", :class => "user_account"}
+          %li.prepend.append.double.field
+            %input.wide.text.input{:type => "text", :name => "team[players_attributes][player1][email]", :class => "email", :placeholder => 'Player1 email'}
+            %input.wide.text.input{:type => "text", :name => "team[players_attributes][player1][user_account]", :class => "user_account", :placeholder => 'Player1 twitter/github'}
+          %li.last.field
+            .picker
+              %select{:name => "team[players_attributes][player1][type_account]"}
+                %option{value: "twitter" }= "Twitter"
+                %option{value: "github"  }= "Github"
 
-        
-          %li.last
-            %label{:for  => "team[players_attributes][player1][email]"} Email:
-            %input{:type => "text", :name => "team[players_attributes][player1][email]", :class => "email"}
-        
-        
         .player2
-          %h3 Player 2
-        
-          %li
-            %label{:for  => "team[players_attributes][player2][type_account]"} Type account:
-            %select{:name => "team[players_attributes][player2][type_account]"}
-              %option{value: "twitter" }= "Twitter"
-              %option{value: "github"  }= "Github"
-        
-          %li
-            %label{:for  => "team[players_attributes][player2][user_account]"} User account:
-            %input{:type => "text", :name => "team[players_attributes][player2][user_account]", :class => "user_account"}
-        
-          %li.last
-            %label{:for  => "team[players_attributes][player2][email]"} Email:
-            %input{:type => "text", :name => "team[players_attributes][player2][email]", :class => "email"}
-        
-        
-    %input{:type => "submit", :value => "Send", :class => "button"}
+          %li.prepend.append.double.field
+            %input.wide.text.input{:type => "text", :name => "team[players_attributes][player2][email]", :class => "email", :placeholder => 'Player2 email'}
+            %input.wide.text.input{:type => "text", :name => "team[players_attributes][player2][user_account]", :class => "user_account", :placeholder => 'Player2 twitter/github'}
+          %li.last.field
+            .picker
+              %select{:name => "team[players_attributes][player2][type_account]"}
+                %option{value: "twitter" }= "Twitter"
+                %option{value: "github"  }= "Github"
+    .pretty.medium.default.btn          
+      %input{:type => "submit", :value => "Send", :class => "button"}
