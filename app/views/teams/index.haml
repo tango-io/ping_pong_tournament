@@ -1,0 +1,92 @@
+.teams{ng_controller: "teamController"}
+  %ul  
+    - teams.each do |team|
+      %li.btn{"data-toggle" => "modal", :href => "#teamModal", :role => "button", "data-backdrop" => "false", ng_click: "fillModal(#{team.to_json}, #{team.players.to_json})" }
+        %h2= team.name
+        %label{:for  => "picture"} Team Picture:
+        %br
+  %a.btn{"data-toggle" => "modal", :href => "#teamNewModal", :role => "button", "data-backdrop" => "false"}New team
+/ Modal
+#teamModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h2.teamName
+  .modal-body
+    .player
+      %img.image
+      %h2
+        %a.user_account
+      %h4.email
+    .player
+      %img.image
+      %h2
+        %a.user_account
+      %h4.email
+
+  .modal-footer
+    %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+
+
+#teamNewModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabeladsda", :role => "dialog", :tabindex => "-1"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3.teamName
+  .modal-body
+    %form{ :action => '/api/teams', :method => "post"}
+      %fieldset
+        %ul
+
+          .team
+            %h2 Team
+            %li
+              %label{:for  => "name"} Team Name:
+              %input{:type => "text", :name => "team[name]", :class => "text"}
+                
+            %li
+              %label{:for  => "picture"} Team Picture:
+              %input{:type => "file", :name => "team[picture]", :class => "text"}
+
+          .players
+            %h2 Players
+
+            .player1
+              %h3 Player 1
+            
+              %li
+                %label{:for  => "team[players_attributes][player1][type_account]"} Type account:
+                %select{:name => "team[players_attributes][player1][type_account]"}
+                  %option{value: "twitter" }= "Twitter"
+                  %option{value: "github"  }= "Github"
+            
+              %li
+                %label{:for  => "team[players_attributes][player1][user_account]"} User account:
+                %input{:type => "text", :name => "team[players_attributes][player1][user_account]", :class => "user_account"}
+
+            
+              %li
+                %label{:for  => "team[players_attributes][player1][email]"} Email:
+                %input{:type => "text", :name => "team[players_attributes][player1][email]", :class => "email"}
+            
+            
+            .player2
+              %h3 Player 2
+            
+              %li
+                %label{:for  => "team[players_attributes][player2][type_account]"} Type account:
+                %select{:name => "team[players_attributes][player2][type_account]"}
+                  %option{value: "twitter" }= "Twitter"
+                  %option{value: "github"  }= "Github"
+            
+              %li
+                %label{:for  => "team[players_attributes][player2][user_account]"} User account:
+                %input{:type => "text", :name => "team[players_attributes][player2][user_account]", :class => "user_account"}
+            
+              %li
+                %label{:for  => "team[players_attributes][player2][email]"} Email:
+                %input{:type => "text", :name => "team[players_attributes][player2][email]", :class => "email"}
+            
+            
+        %input{:type => "submit", :value => "Send", :class => "button"}
+  .modal-footer
+    %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+

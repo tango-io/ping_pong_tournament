@@ -10,5 +10,5 @@ Pinpong::Application.routes.draw do
     resources :teams,       defaults: {format: :json}
   end
 
-  resources :teams, only: [ :new ]
+  resources :teams, only: [:index, :new ]
 end

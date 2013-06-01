@@ -8,7 +8,7 @@ class Player < ActiveRecord::Base
 
   def is_valid?
     account = type_account == 'twitter' ? (Twitter.users(self.user_account) rescue nil) : (Github.repos.list user: user_account rescue nil)
-    return account.nil? ? false : true
+    return account.nil? || account.size == 0 ? false : true
   end
 
   def set_profile_image
