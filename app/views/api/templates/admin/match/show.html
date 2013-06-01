@@ -1,0 +1,28 @@
+<div ng-controller="AdminMatchController">
+  <span>
+    Manage match
+  </span>
+  <div ng-repeat="team in match.teams">
+    <span ng-click="deleteTeam(team.id)">
+      Delete team!
+    <span>
+      <img src="/temp_team_large.png"/>
+      <!--<img src="{{ team.picture || '/temp_ico_large.png' }}"/>-->
+    </span>
+    <span>
+      {{team.name}}
+    </span>
+  </div>
+  <div ng-repeat="set in match.sets">
+    Set {{$index+1}}
+    <div ng-repeat="score in set.scores">
+      <span inputdisplay class="score">
+        {{score.total}}
+      </span>
+      <div class="score_input" style="display: none;">
+        <input type="text" ng-model="score.total"/>
+        <button inputhide a="{{score.total}}" ng-click="updateScore(score.id, score.total)">Done</button>
+      </div>
+    </div>
+  </div>
+</div>

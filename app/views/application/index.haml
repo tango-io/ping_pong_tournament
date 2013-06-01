@@ -1,7 +1,3 @@
-.mobile
-  hello worl from mobile
-.desktop
-  hello world from desktop
-
-%div{ ng_controller: "ApplicationIndexController" }
-  {{message}}
+%div(ng-controller="TemplatesController")
+  %div(ng-view)
+    %div(ng-include="textTemplate")

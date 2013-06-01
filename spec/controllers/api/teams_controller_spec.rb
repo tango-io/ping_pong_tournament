@@ -8,9 +8,30 @@ describe Api::TeamsController do
 
     it "returns a team with the id specified" do
       team.save
-      get :show, { :id => team.id, :format => :json, team: team}
+      get :show, { id: team.id, format: :json, team: team }
 
-      response.body.should == { team: team }.to_json
+      players = []
+      team.players.each do | player |
+        temp = {
+          user_account: player.user_account,
+          type_account: player.type_account,
+          picture_url: player.picture_url
+        }
+
+        players << temp
+      end
+
+      attributes = {} 
+      team.attributes.each do | name, value |
+          attributes[name.to_sym] = value
+      end
+      attributes[:players] = players
+
+      expected_json = {
+        team: attributes 
+      }.to_json
+
+      response.body.should == expected_json
     end
 
     context 'With the correct message' do
@@ -20,6 +41,8 @@ describe Api::TeamsController do
 
         JSON.parse(response.body)["message"].should == "The Team was successfully created"
         Team.last.players.count.should == 2
+        
+        Team.last.matches.last.match_round_id.should == 1
       end
 
       it "returns the correct message when a team was not created" do

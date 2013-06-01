@@ -37,5 +37,13 @@ describe MatchRound do
     end
   end
 
+  it "#returns available matches" do
+    team = FactoryGirl.create(:team)
+    match = MatchRound.round_of_16.matches.first
+    match.teams << team
+    match.teams << team
+    (MatchRound.round_of_16.available_matches.include? match).should == false
+  end
+
 end
 

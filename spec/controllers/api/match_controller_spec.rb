@@ -12,30 +12,30 @@ describe Api::MatchController do
       score_array = [] 
 
       set.scores.each do | score |
-        temp = { score: {
-                  id: score.id,
-                  total: score.total,
-                  team_id: score.team_id
-        }}
+        temp = {
+          id: score.id,
+          total: score.total,
+          team_id: score.team_id
+        }
 
         score_array << temp
       end
 
-      temp = { match_set: {
-               id: set.id,
-               set_number: set.set_number,
-               scores: score_array
-      }}
+      temp = {
+        id: set.id,
+        set_number: set.set_number,
+        scores: score_array
+      }
 
       match_array << temp
     end
 
     match.teams.each do | team |
-      temp = {  team: { 
-                id: team.id,
-                name: team.name,
-                picture: {}
-      }}
+      temp = { 
+        id: team.id,
+        name: team.name,
+        picture: {}
+      }
 
       team_array << temp
     end

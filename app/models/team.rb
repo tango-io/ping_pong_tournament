@@ -12,4 +12,12 @@ class Team < ActiveRecord::Base
   has_many                      :scores
   has_many                      :sets, class_name: 'MatchSet'
 
+  def valid_team?
+    valid = []
+    players.each do |player|
+      valid << player.is_valid?
+    end
+    (valid.include? false) ? false : true
+  end
+
 end

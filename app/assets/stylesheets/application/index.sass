@@ -1,0 +1,80 @@
+@import screen 
+
+a
+  color: black
+  text-decoration: none
+
+  &:hover
+    color: gray
+
+header
+
+  .header-titles-container
+    background-image: url('/assets/header-bg.jpg')
+    height: 81px
+    padding: 0 30px
+
+    .logo 
+      float: left
+      height: 50%
+      margin-top: 12px
+
+      +at-breakpoint($mobile)
+        height: 80%
+
+    .hash-tag
+      clear: both
+      color: white
+      float: left
+      font-size: 8pt
+      font-weight: bold
+      margin-top: 0px
+
+      +at-breakpoint($mobile)
+        clear: none
+        float: right
+        font-size: 14pt 
+        margin-top: 30px
+      
+  nav ul
+    background: #c7c7c7
+    border-bottom: 5px solid #ffb400
+    margin: 0
+
+    li
+      display: block
+      font-weight: bold
+      list-style: none
+      padding: 7px 10px 5px 10px
+
+      +at-breakpoint($mobile)
+        display: inline-block
+
+    a
+      color: #022f55
+
+      &:hover
+        color: lighten(#022f55, 20%)
+
+#content
+  border-bottom: 2px solid gray
+  min-height: 400px
+
+footer
+  text-align: center
+
+
+li.btn 
+  width: 8%
+  cursor: pointer
+
+#teamNewModal
+  display: none
+
+#teamModal
+  .modal-body
+    display: block 
+    
+    .player
+      display: inline-block
+      width: 45%
