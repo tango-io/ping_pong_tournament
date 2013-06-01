@@ -25,6 +25,10 @@ li
     img
       width: 200px
       border: 2px dotted #c7c7c7
+
+    +at-breakpoint($tablet)
+      +span-columns(4,9)
+
     +at-breakpoint($mobile)
       +span-columns(2,9)
       img
@@ -34,23 +38,30 @@ li
     +span-columns(5 omega, 5)
     margin: 0
     padding-top: 0px
+
     li
+
       label
         font-size: 10px !important
         +span-columns(1, 5)
+        +at-breakpoint($mobile)
+          +span-columns(2,9)
+          font-size: 14px !important 
+
       input
-        width: 83% !important
+        width: 79% !important
         float: none !important
         +span-columns(4 omega, 5)
+        +at-breakpoint($mobile)
+          width: initial
+          +span-columns(7 omega, 9)
+
+    +at-breakpoint($tablet)
+      +span-columns(5 omega,9)
 
     +at-breakpoint($mobile)
       +span-columns(7 omega,9)
       padding-top: 18px
-      label
-        +span-columns(2,9)
-      input
-        width: initial
-        +span-columns(7 omega, 9)
 
 .player1, .player2
 
@@ -80,3 +91,11 @@ form
 
 .register-btn
   +span-columns(5 omega, 5)
+  input
+    display: initial
+  +at-breakpoint($mobile)
+    +span-columns(1)
+    +pad(1,1)
+    input
+      display: block
+      padding-left: 30%
