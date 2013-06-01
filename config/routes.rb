@@ -2,6 +2,9 @@ Pinpong::Application.routes.draw do
   devise_for :users, skip: :registrations
   root to: "application#index"
 
+  get '/pages'                      => 'pages#index'
+  get 'api/templates/:template'     => 'api/templates#get'
+
   namespace :api do
     resources :round,       only: [ :show ]
     resources :match,       only: [ :show ]

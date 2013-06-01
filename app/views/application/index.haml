@@ -1,1 +1,3 @@
-%div(ng-view)
+%div(ng-controller="TemplatesController")
+  %div(ng-view)
+    %div(ng-include="textTemplate")
