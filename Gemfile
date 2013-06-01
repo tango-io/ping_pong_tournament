@@ -18,7 +18,7 @@ gem 'rabl'
 gem 'twitter'
 gem "github_api"
 gem 'devise', '~> 3.0.0.rc'
-gem "rmagick"
+gem 'mini_magick'
 gem "carrierwave"
 
 group :development do

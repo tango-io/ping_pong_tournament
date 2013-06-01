@@ -1,6 +1,6 @@
 Pinpong::Application.routes.draw do
   devise_for :users, skip: :registrations
-  root to: "application#index"
+  root to: "teams#index"
 
   namespace :api do
     resources :round,       only: [ :show ]

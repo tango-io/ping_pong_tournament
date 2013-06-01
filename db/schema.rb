@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130531191355) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20130601220853) do
 
   create_table "match_rounds", force: true do |t|
     t.string   "name"
@@ -24,6 +21,7 @@ ActiveRecord::Schema.define(version: 20130531191355) do
   end
 
   create_table "match_sets", force: true do |t|
+    t.integer  "set_number"
     t.integer  "match_id"
     t.integer  "team_id"
     t.datetime "created_at"
@@ -62,9 +60,9 @@ ActiveRecord::Schema.define(version: 20130531191355) do
 
   create_table "teams", force: true do |t|
     t.string   "name"
-    t.string   "picture",    default: "no picture"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "picture"
   end
 
   create_table "users", force: true do |t|
