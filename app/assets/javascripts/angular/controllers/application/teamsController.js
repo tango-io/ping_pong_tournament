@@ -1,4 +1,4 @@
-App.controller('teamController', ['$scope', function($scope){
+App.controller('teamsController', ['$scope', function($scope){
 
   $scope.fillModal = function(team, players){
     $team   = $("#teamModal .teamName");
@@ -6,7 +6,6 @@ App.controller('teamController', ['$scope', function($scope){
     $player = $("#teamModal .player");
 
     $team.text(team.name);
-    debugger
     $img.attr('src', team.picture.thumb.url);
     $player.each(function(){
       player = players[$(this).index()];

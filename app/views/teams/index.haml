@@ -1,4 +1,4 @@
-.teams{ng_controller: "teamController"}
+.teams{ng_controller: "teamsController"}
   %ul  
     - teams.each do |team|
       %li.btn{"data-toggle" => "modal", :href => "#teamModal", :role => "button", "data-backdrop" => "false", ng_click: "fillModal(#{team.to_json}, #{team.players.to_json})" }

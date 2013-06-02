@@ -4,5 +4,9 @@ child :players, :object_root => false do
   attributes :user_account, :type_account, :picture_url
 end
 node :picture_url, :object_root => false do
-  team.picture.url
+  if team.picture.thumb.url.nil?
+    '/assets/temp_team.png'
+  else
+    team.picture.thumb.url
+  end
 end
