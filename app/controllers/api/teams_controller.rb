@@ -17,6 +17,7 @@ class Api::TeamsController < ApiController
     team = Team.new(team_params)
     if team.valid_team? && team.save
         match.teams << team
+        match.start if match.teams.count == 2
         redirect_to "#/round/1"
     else
       redirect_to :back

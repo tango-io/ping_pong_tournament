@@ -1,4 +1,4 @@
-App.controller('teamController', ['$scope', function($scope){
+App.controller('teamsController', ['$scope', function($scope){
 
   $scope.fillModal = function(team, players){
     $team   = $("#teamModal .teamName");
@@ -6,7 +6,6 @@ App.controller('teamController', ['$scope', function($scope){
     $player = $("#teamModal .player");
 
     $team.text(team.name);
-    debugger
     $img.attr('src', team.picture.thumb.url);
     $player.each(function(){
       player = players[$(this).index()];
@@ -21,5 +20,26 @@ App.controller('teamController', ['$scope', function($scope){
     });
 
   };
+
+
+  $('#jTweetsAnywhereEndlessScrollingSample').jTweetsAnywhere({
+    username: 'magmaconf',
+    count: 10,
+    showTweetFeed: {
+      showProfileImages: true,
+      showUserScreenNames: true,
+      paging: {
+        mode: 'endless-scroll'
+      }
+    },
+    onDataRequestHandler: function(stats) {
+      if (stats.dataRequestCount < 11) {
+        return true;
+      }
+      else {
+        alert("To avoid struggling with Twitter's rate limit, we stop loading data after 10 API calls.");
+      }
+    }
+  });
 
 }]);

@@ -20,5 +20,4 @@ class Team < ActiveRecord::Base
     end
     (valid.include? false) ? false : true
   end
-
 end
