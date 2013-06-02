@@ -6,3 +6,5 @@
 //= require app
 //= require bootstrap
 //= require_tree ./angular
+//= require jquery.jtweetsanywhere-1.3.1
+//= require jtweetsanywhere-de-1.3.1
