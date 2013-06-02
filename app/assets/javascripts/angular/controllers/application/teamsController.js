@@ -22,4 +22,25 @@ App.controller('teamController', ['$scope', function($scope){
 
   };
 
+
+  $('#jTweetsAnywhereEndlessScrollingSample').jTweetsAnywhere({
+    username: 'magmaconf',
+    count: 10,
+    showTweetFeed: {
+      showProfileImages: true,
+      showUserScreenNames: true,
+      paging: {
+        mode: 'endless-scroll'
+      }
+    },
+    onDataRequestHandler: function(stats) {
+      if (stats.dataRequestCount < 11) {
+        return true;
+      }
+      else {
+        alert("To avoid struggling with Twitter's rate limit, we stop loading data after 10 API calls.");
+      }
+    }
+  });
+
 }]);
