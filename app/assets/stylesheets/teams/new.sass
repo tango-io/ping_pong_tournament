@@ -1,0 +1,101 @@
+@import screen
+
++layout(5)
+  #content
+    +container
++at-breakpoint($mobile)
+  +layout(9)
+    #content
+      +container
+
+li
+  list-style: none
+
+.team
+  display: inline-block
+  +span-columns(5 omega, 5)
+  +at-breakpoint($mobile)
+    +span-columns(9 omega, 9)
+
+  h2
+    margin-bottom: 5px
+
+  .picture
+    text-align: center
+    img
+      width: 200px
+      border: 2px dotted #c7c7c7
+
+    +at-breakpoint($tablet)
+      +span-columns(4,9)
+
+    +at-breakpoint($mobile)
+      +span-columns(2,9)
+      img
+        width: 125px
+    
+  .info
+    +span-columns(5 omega, 5)
+    margin: 0
+    padding-top: 0px
+
+    li
+
+      label
+        font-size: 10px !important
+        +span-columns(1, 5)
+        +at-breakpoint($mobile)
+          +span-columns(2,9)
+          font-size: 14px !important 
+
+      input
+        width: 79% !important
+        float: none !important
+        +span-columns(4 omega, 5)
+        +at-breakpoint($mobile)
+          width: initial
+          +span-columns(7 omega, 9)
+
+    +at-breakpoint($tablet)
+      +span-columns(5 omega,9)
+
+    +at-breakpoint($mobile)
+      +span-columns(7 omega,9)
+      padding-top: 18px
+
+.player1, .player2
+
+  h3
+    margin-bottom: 5px
+
+  label
+    display: block
+
+  li
+    +span-columns(5 omega, 5)
+    +at-breakpoint($mobile)
+      +span-columns(6,9)
+
+  li.last.field
+    +span-columns(5 omega,5)
+    .picker
+      width: 100%
+    +at-breakpoint($mobile)
+      +span-columns(3 omega,9)
+
+form
+  fieldset
+    padding: 0
+    border: none
+    width: 100%
+
+.register-btn
+  +span-columns(5 omega, 5)
+  input
+    display: initial
+  +at-breakpoint($mobile)
+    +span-columns(1)
+    +pad(1,1)
+    input
+      display: block
+      padding-left: 30%
