@@ -1,8 +1,8 @@
 Pinpong::Application.routes.draw do
   devise_for :users, skip: :registrations
-  root to: "teams#index"
+  root to: "application#index"
 
-  get '/pages'                      => 'pages#index'
+  get '/scores'                      => 'scores#index'
   get 'api/templates/:template'     => 'api/templates#get'
 
   namespace :api do

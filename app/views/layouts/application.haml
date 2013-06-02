@@ -19,14 +19,14 @@
       %nav
         %ul
           %li
-            =link_to 'Teams', 'application#teams'
+            =link_to 'Teams', teams_path
           %li
-            =link_to 'Scores', 'application#scores'
+            =link_to 'Scores', scores_path
           %li
             =link_to 'Rules', 'application#rules'
     
     #content
       = yield
-    
+
     %footer
       %p < Playing ping pong at #someHashTag tournament #{link_to 'http://bit.ly/as893fs3', 'http://bit.ly/as893fs3'} >

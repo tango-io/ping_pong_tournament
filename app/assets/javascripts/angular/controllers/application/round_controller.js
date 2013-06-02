@@ -1,10 +1,5 @@
 App.controller('RoundController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
-  $scope.$on('something', function(event, id){
-    console.log(arguments);
-  });
-
   $scope.matches = [];
-  $scope.round = $location.path().split('/')[2];
   $scope.round = $routeParams.id || 4;
 
   $scope.showRound = (function(){

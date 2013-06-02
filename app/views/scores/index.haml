@@ -1,0 +1,7 @@
+%div(ng-view)
+
+%script
+  if(location.hash === ""){
+  location = '#/round/1';
+  location.reload();
+  }
