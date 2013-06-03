@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20130601220853) do
   create_table "match_sets", force: true do |t|
     t.integer  "set_number"
     t.integer  "match_id"
+    t.integer  "position"
     t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 20130601220853) do
 
   create_table "scores", force: true do |t|
     t.integer  "total",        default: 0
+    t.integer  "position"
     t.integer  "match_set_id"
     t.integer  "team_id"
     t.datetime "created_at"

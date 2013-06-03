@@ -6,12 +6,17 @@ class Match < ActiveRecord::Base
 
   has_and_belongs_to_many :teams
 
+  def next_match
+    new_match_position = (match_number/2 + match_number%2 )
+    round.next_round.matches.find_by(match_number: new_match_position)
+  end
+
   def start
     if teams.count == 2
-      3.times { |n| sets.create( set_number: n + 1 ) }
+      3.times { |n| sets.create( set_number: n + 1, position: n + 1 ) }
       sets.each do |set|
-        set.scores.create(team: teams.first)
-        set.scores.create(team: teams.last)
+        set.scores.create(team: teams.first, position: 1)
+        set.scores.create(team: teams.last, position: 2)
       end
     end
   end
@@ -23,7 +28,7 @@ class Match < ActiveRecord::Base
   def match_winner
     winner = have_winner
 
-    round.advance_from_round winner, match_number
+    round.advance_from_round winner, next_match
     return winner
   end
 
@@ -40,8 +45,8 @@ class Match < ActiveRecord::Base
     end
 
     winner = nil 
-    winner = team_1[:team] if team_1[:wins] == 2
-    winner = team_2[:team] if team_2[:wins] == 2
+    winner = team_1[:team] if team_1[:wins] >= 2
+    winner = team_2[:team] if team_2[:wins] >= 2
 
     return winner
   end

@@ -1,6 +1,6 @@
 <div class="rounds" ng-controller="RoundController">
   <h1>Round {{round}}</h1>
-  <ul class="round_matches" ng-model="matches">
+  <ul class="round_matches">
     <li class="matches" ng-repeat="match in matches" ng-class="match.pair">
     <div class="ng-cloak match">
       <% unless current_user.nil? %>
@@ -20,6 +20,7 @@
       <div class="score_board">
         <% unless current_user.nil? %>
         <div ng-repeat="set in match.match_sets" ng-controller="AdminRoundController">
+<<<<<<< HEAD
           <% else %>
           <div class="sets" ng-repeat="set in match.match_sets">
             <% end %>
@@ -41,16 +42,50 @@
                   <% end %>
                 </div>
               </div>
+=======
+        <% else %>
+        <div class="sets" ng-repeat="set in match.match_sets">
+          <% end %>
+          Set {{$index+1}}
+          <div class="set_score" ng-repeat="score in set.scores">
+            <% unless current_user.nil? %>
+              <span class="score">
+            <% else %>
+            <span inputdisplay class="score">
+            <% end %>
+              {{score.total}}
+            </span>
+            <div class="score_input" style="display: none;">
+              <input type="text" ng-model="score.total"/>
+              <% unless current_user.nil? %>
+              <button a="{{score.total}}" ng-click="updateScore(score.id, score.total)">Done</button>
+              <% else %>
+              <button inputhide a="{{score.total}}" ng-click="updateScore(score.id, score.total)">Done</button>
+              <% end %>
+>>>>>>> teams are able to go trough the rounds
             </div>
             <div class="match_members" ng-show="match.empty">
               No teams available
             </div>
           </div>
+<<<<<<< HEAD
           </li>
         </ul>
         <button ng-hide="round_num == 1" ng-click="previousMatch(round)">Previous round</button>
         <button ng-click="nextMatch(round)">Next round</button>
       </div>
+=======
+        </div>
+      <div class="match_members" ng-show="match.empty">
+        No teams available
+      </div>
+    </div>
+    </li>
+  </ul>
+  <button ng-hide="round_num == 1" ng-click="previousMatch(round)">Previous round</button>
+  <button ng-click="nextMatch(round)">Next round</button>
+</div>
+>>>>>>> teams are able to go trough the rounds
 
       <div id="teamModal" class="modal hide fade" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1">
         <div class="modal-header">

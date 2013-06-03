@@ -4,7 +4,6 @@ App.controller('RoundController', ['$scope', '$http', '$location', '$routeParams
   $scope.showRound = function(){
     $scope.matches = [];
     var id = $scope.round;
-    debugger
     $http.get('/api/round/' + id).success(function(data){
       angular.forEach(data, function(m, index){
         m.match.pair = index%2 === 0 ? 'gray' : 'white';
@@ -25,7 +24,6 @@ App.controller('RoundController', ['$scope', '$http', '$location', '$routeParams
 
   $scope.updateScore = function(id, score){
     $http.put('api/score/'+id, { total: score });
-    $scope.showRound();
   };
 
   $scope.showTeam = function(id){
