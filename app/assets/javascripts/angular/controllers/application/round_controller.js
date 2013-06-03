@@ -27,9 +27,11 @@ App.controller('RoundController', ['$scope', '$http', '$location', '$routeParams
     }
   };
 
-  $scope.deleteMatch= function(id){
-    console.log(id);
+  $scope.deleteTeam = function(id){
+    console.log('here');
+    $http.delete('api/teams/'+id);
   };
+
 
   $scope.previousMatch = function(id){
     var next_id = parseInt(id) - 1;
@@ -60,10 +62,6 @@ App.controller('RoundController', ['$scope', '$http', '$location', '$routeParams
 
 App.controller('AdminRoundController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
   $scope.match_number = $routeParams.id;
-
-  $scope.deleteTeam = function(id){
-    $http.delete('api/teams/'+id);
-  };
 
   $scope.updateScore = function(id, score){
     $http.put('api/score/'+id, { total: score });

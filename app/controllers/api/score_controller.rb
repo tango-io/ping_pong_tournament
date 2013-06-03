@@ -5,6 +5,7 @@ class Api::ScoreController < ApiController
     binding.pry
     score.update_attributes(total: params[:total])
 
+
     if score.save
       respond_to do | format |
         format.json { render json: { status: 202 } }
