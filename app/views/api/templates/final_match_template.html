@@ -1,7 +1,7 @@
 <div class="rounds" ng-controller="RoundController">
-  <h1>Final Match</h1>
+  <h1 class="final_match">Final Match</h1>
   <div ng-repeat="match in matches" ng-class="match.pair">
-    <ul class="round_matches">
+    <ul class="round_matches final_match">
       <li class="matches">
       <div class="ng-cloak match">
         <div class="teams">
@@ -41,21 +41,27 @@
             </div>
           </div>
           <div class="ng-cloak">
-            <div ng-hide="match.winner">
-              <span>
-                <img src="{{match.champion.picture_url}}"/>
-              </span>
-              <span>
-                This is the champion
-                {{match.champion.name}}
-              </span>
+            <div class="winner_container" ng-hide="match.winner">
+              <div class="title">
+                <p>This is the champion</p>
+              </div>
+              <div class="champ_name"> 
+                <p>{{match.champion.name}}</p>
+              </div>
+              <div class="champ_img">
+                <span>
+                  <img class="champ" src="{{match.champion.picture_url}}"/>
+                </span>
+              </div>
+              <br>
               <ul>
-                <li ng-repeat="player in match.champion.players">
+                <li class="champ_player" ng-repeat="player in match.champion.players">
                 <span>
                   <img src="{{player.picture_url}}"/>
                 </span>
+                <br>
                 <span>
-                  {{player.user_account}}
+                  <a href="http://www.{{player.type_account}}.com/{{player.user_account}}">{{player.user_account}}</a>
                 </span>
                 </li>
               </ul>
@@ -69,6 +75,6 @@
       </div>
       </li>
     </ul>
+    <button ng-click="previousMatch(round)">Previous round</button>
   </div>
-  <button ng-click="previousMatch(round)">Previous round</button>
 </div>
