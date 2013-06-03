@@ -1,8 +1,8 @@
 App.controller('RoundController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
-  $scope.matches = [];
   $scope.round = $routeParams.id || 4;
 
-  $scope.showRound = (function(){
+  $scope.showRound = function(){
+    $scope.matches = [];
     var id = $scope.round;
     $http.get('/api/round/' + id).success(function(data){
       angular.forEach(data, function(m, index){
@@ -12,7 +12,19 @@ App.controller('RoundController', ['$scope', '$http', '$location', '$routeParams
         $scope.matches.push(m.match);
       });
     });
-  }).call(this);
+  };
+
+  $scope.showRound();
+
+  $scope.deleteTeam = function(team_id, match_id){
+    $http.post('api/match/'+match_id+'/clear_space');
+    $http.delete('api/teams/'+team_id);
+    $scope.showRound();
+  };
+
+  $scope.updateScore = function(id, score){
+    $http.put('api/score/'+id, { total: score });
+  };
 
   $scope.showTeam = function(id){
     $location.path('team/'+id);
@@ -25,10 +37,6 @@ App.controller('RoundController', ['$scope', '$http', '$location', '$routeParams
     } else {
       $location.path('round/final_match');
     }
-  };
-
-  $scope.deleteMatch= function(id){
-    console.log(id);
   };
 
   $scope.previousMatch = function(id){
@@ -55,18 +63,6 @@ App.controller('RoundController', ['$scope', '$http', '$location', '$routeParams
       }
       $(this).find('.image').attr('src', player.picture_url);
     });
-  };
-}]);
-
-App.controller('AdminRoundController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
-  $scope.match_number = $routeParams.id;
-
-  $scope.deleteTeam = function(id){
-    $http.delete('api/teams/'+id);
-  };
-
-  $scope.updateScore = function(id, score){
-    $http.put('api/score/'+id, { total: score });
   };
 }]);
 

@@ -1,77 +1,79 @@
-<div ng-controller="RoundController">
-  Round {{round}}
-  <ul>
-    <li ng-repeat="match in matches" ng-class="match.pair">
-    <div class="ng-cloak">
-      <% unless current_user.nil? %>
-      <span ng-click="deleteTEam(team.id)">
-        Delete team!
-      </span>
-      <% end %>
-      <div ng-hide="match.empty" ng-repeat="team in match.teams" ng-class="{'second': $index, 'first': !$index }" ng-click="fillModal(team, team.players)" href="#teamModal" data-toggle="modal">
-        <span>
-          <img src="{{team.picture_url}}"/>
-        </span>
-        <span>
-          {{team.name}}
-        </span>
-      </div>
-      <% unless current_user.nil? %>
-      <div ng-repeat="set in match.match_sets" ng-controller="AdminRoundController">
-      <% else %>
-      <div ng-repeat="set in match.match_sets">
-        <% end %>
-        Set {{$index+1}}
-        <div ng-repeat="score in set.scores">
+<div class="rounds" ng-controller="RoundController">
+  <h1>Round {{round}}</h1>
+  <ul class="round_matches">
+    <li class="matches" ng-repeat="match in matches" ng-class="match.pair">
+    <div class="ng-cloak match">
+      <div class="teams">
+        <div class="match_members" ng-hide="match.empty" ng-repeat="team in match.teams" ng-class="{'second': $index, 'first': !$index }">
           <% unless current_user.nil? %>
-          <span inputdisplay class="score">
-            <% else %>
-            <span class="score">
-              <% end %>
-              {{score.total}}
-            </span>
-            <div class="score_input" style="display: none;">
-              <input type="text" ng-model="score.total"/>
+          <span ng-click="deleteTeam(team.id)">
+            <img class="delete" src="/assets/delete.ico" />
+          </span>
+          <% end %>
+          <span ng-click="fillModal(team, team.players)" href="#teamModal" data-toggle="modal">
+            <img src="{{team.picture_url}}"/>
+            <p>{{team.name}}</p>
+          </span>
+        </div>
+      </div>
+      <br>
+      <div class="score_board">
+        <div class="sets" ng-repeat="set in match.match_sets">
+            Set {{$index+1}}
+            <div class="set_score" ng-repeat="score in set.scores">
               <% unless current_user.nil? %>
-              <button inputhide a="{{score.total}}" ng-click="updateScore(score.id, score.total)">Done</button>
+              <span inputdisplay class="score">
               <% else %>
-              <button a="{{score.total}}" ng-click="updateScore(score.id, score.total)">Done</button>
+              <span class="score">
               <% end %>
+                {{score.total}}
+              </span>
+              <div class="score_input" style="display: none;">
+                <input type="text" ng-model="score.total"/>
+                <% unless current_user.nil? %>
+                <button inputhide a="{{score.total}}" ng-click="updateScore(score.id, score.total)">Done</button>
+                <% else %>
+                <button a="{{score.total}}" ng-click="updateScore(score.id, score.total)">Done</button>
+                <% end %>
+              </div>
+            </div>
+            </div>
+            <div class="match_members" ng-show="match.empty">
+              No teams available
             </div>
           </div>
+          <div class="match_members" ng-show="match.empty">
+            No teams available
+          </div>
         </div>
-        <div ng-show="match.empty">
-          No teams available
+        </li>
+      </ul>
+      <button ng-hide="round_num == 1" ng-click="previousMatch(round)">Previous round</button>
+      <button ng-click="nextMatch(round)">Next round</button>
+    </div>
+
+      <div id="teamModal" class="modal hide fade" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1">
+        <div class="modal-header">
+          <button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+          <h2 class="teamName"></h2>
+          <img class="teamImage" />
+        </div>
+        <div class="modal-body">
+          <div class="player">
+            <img class="image" />
+            <h2>
+              <a class="user_account"></a>
+            </h2>
+            <h4 class="email"></h4>
+          </div>
+          <div class="player">
+            <img class="image" />
+            <h2>
+              <a class="user_account"></a>
+            </h2>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn" aria-hidden="true" data-dismiss="modal">Close</button>
         </div>
       </div>
-      </li>
-    </ul>
-    <button ng-hide="round_num == 1" ng-click="previousMatch(round)">Previous round</button>
-    <button ng-click="nextMatch(round)">Next round</button>
- </div>
-
- <div id="teamModal" class="modal hide fade" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1">
-   <div class="modal-header">
-     <button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
-     <h2 class="teamName"></h2>
-     <img class="teamImage" />
-   </div>
-   <div class="modal-body">
-     <div class="player">
-       <img class="image" />
-       <h2>
-         <a class="user_account"></a>
-       </h2>
-       <h4 class="email"></h4>
-     </div>
-     <div class="player">
-       <img class="image" />
-       <h2>
-         <a class="user_account"></a>
-       </h2>
-     </div>
-   </div>
-   <div class="modal-footer">
-     <button class="btn" aria-hidden="true" data-dismiss="modal">Close</button>
-   </div>
- </div>

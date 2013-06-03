@@ -10,12 +10,17 @@ class MatchRound < ActiveRecord::Base
   scope :quarters,    -> { find_by(name: 'quarters') }
   scope :final,       -> { find_by(name: 'final') }
 
-  def advance_from_round team, actual_match_position
-    unless team.nil?
-      next_round_matches = MatchRound.find_by(number: number + 1).matches
-      new_match_position = (actual_match_position/2 + actual_match_position%2 )
-      next_match = next_round_matches.find_by(match_number: new_match_position)
+  def next_round
+    return MatchRound.find_by(number: number + 1)
+  end
+
+  def advance_from_round team, next_match
+    unless next_match.teams.count < 2 and next_match.teams.include?(team) or team.nil?
       next_match.teams << team if next_match.teams.count < 2
+    end
+
+    if next_match.teams.count == 2 and next_match.sets.empty?
+      next_match.start
     end
   end
 

@@ -6,8 +6,7 @@
       <div class="ng-cloak">
         <div ng-hide="match.empty" ng-repeat="team in match.teams" ng-class="{'second': $index, 'first': !$index }" ng-click="showTeam(team.id)">
           <span>
-            <img src="<%= image_path('temp_team.png') %>"/>
-            <!--<img src="{{ team.picture || '/temp_team.png' }}"/>-->
+            <img src="{{team.picture_url}}"/>
           </span>
           <span>
             {{team.name}}
@@ -17,13 +16,34 @@
           No teams available
         </div>
       </div>
+    <br>
+    <div class="score_board">
+      <div class="sets" ng-repeat="set in match.match_sets">
+        Set {{$index+1}}
+        <div class="set_score" ng-repeat="score in set.scores">
+          <% unless current_user.nil? %>
+          <span inputdisplay class="score">
+          <% else %>
+          <span class="score">
+          <% end %>
+            {{score.total}}
+          </span>
+          <div class="score_input" style="display: none;">
+            <input type="text" ng-model="score.total"/>
+            <% unless current_user.nil? %>
+            <button inputhide a="{{score.total}}" ng-click="updateScore(score.id, score.total)">Done</button>
+            <% else %>
+            <button a="{{score.total}}" ng-click="updateScore(score.id, score.total)">Done</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
       </li>
     </ul>
     <div class="ng-cloak">
       <div ng-hide="match.winner">
         <span>
-          <img src="<%= image_path('temp_team_large.png') %>"/>
-          <!--<img src="{{ team.picture || <%= image_path('temp_ico_large.png') %> }}"/>-->
+            <img src="{{match.champion.picture_url}}"/>
         </span>
         <span>
           This is the champion
@@ -32,11 +52,9 @@
         <ul>
           <li ng-repeat="player in match.champion.players">
           <span>
-            <img src="<%= image_path('temp_user.png') %>"/>
-            <!--<img src="{{ team.picture_url || <%= image_path('temp_ico.png') %> }}"/>-->
+            <img src="{{player.picture_url}}"/>
           </span>
           <span>
-            {{player.type_account}}
             {{player.user_account}}
           </span>
           </li>
@@ -44,8 +62,7 @@
       </div>
     </div>
     <div ng-show="match.winner">
-      <img src="<%= image_path('temp_team_large.png') %>"/>
-      <!--<img src="{{ team.picture || <%= image_path('temp_team_large.png') %> }}"/>-->
+      <img src="/assets/pads.jpg"/>
       There is no champion, yet!
     </div>
   </div>
