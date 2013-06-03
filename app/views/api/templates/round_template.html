@@ -1,6 +1,6 @@
 <div class="rounds" ng-controller="RoundController">
   <h1>Round {{round}}</h1>
-  <ul class="round_matches">
+  <ul class="round_matches" ng-model="matches">
     <li class="matches" ng-repeat="match in matches" ng-class="match.pair">
     <div class="ng-cloak match">
       <% unless current_user.nil? %>

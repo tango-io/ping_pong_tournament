@@ -2,7 +2,7 @@ class Match < ActiveRecord::Base
   validates_presence_of :match_number
 
   belongs_to :round,  foreign_key: 'match_round_id',  class_name: 'MatchRound'
-  has_many    :sets,  class_name: 'MatchSet'
+  has_many    :sets,  class_name: 'MatchSet', dependent: :delete_all
 
   has_and_belongs_to_many :teams
 
@@ -14,6 +14,10 @@ class Match < ActiveRecord::Base
         set.scores.create(team: teams.last)
       end
     end
+  end
+
+  def cancel_match
+    sets.delete_all
   end
 
   def match_winner

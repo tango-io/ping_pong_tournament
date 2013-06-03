@@ -1,7 +1,7 @@
 class MatchSet < ActiveRecord::Base
   validates_presence_of :match, :set_number
 
-  has_many :scores
+  has_many :scores, dependent: :delete_all
 
   belongs_to :match
   belongs_to :winner, foreign_key: 'team_id', class_name: 'Team'

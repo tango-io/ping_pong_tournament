@@ -7,7 +7,11 @@ Pinpong::Application.routes.draw do
 
   namespace :api do
     resources :round,       only: [ :show ]
-    resources :match,       only: [ :show ]
+    resources :match,       only: [ :show ] do
+      member do
+        post :clear_space
+      end
+    end
     resources :match_set,   only: [ :show ]
     resources :score,       only: [ :update ]
     resources :teams,       defaults: {format: :json}
