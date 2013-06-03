@@ -70,17 +70,38 @@ footer
     text-align: center
     margin-top: 10px
 
-
+ul.teams
+  width: 50%
+  margin: auto
+  margin-top: 3%
+li.btn.white
+  background: white
 li.btn 
-  width: 8%
+  width: 100%
+  height: 30%
   cursor: pointer
+  background: #d8d8d8
+  img, h2
+    float: left
+    margin: 0 3%
+  img
+    width: 150px
+    height: 150px
+  h2
+    margin-top: 4%
 
 #teamNewModal
   display: none
 
 #teamModal
+  .modal-header
+    text-align: center
+    button
+      position: relative
+      float: left
   .modal-body
     display: block 
+    text-align: center
     
     .player
       display: inline-block
