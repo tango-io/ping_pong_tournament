@@ -1,11 +1,15 @@
 .teams{ng_controller: "teamsController"}
-  %ul  
+  %ul.teams  
     - teams.each do |team|
-      %li.btn{"data-toggle" => "modal", :href => "#teamModal", :role => "button", "data-backdrop" => "false", ng_click: "fillModal(#{team.to_json}, #{team.players.to_json})" }
+      %li.btn{:class => "#{"white" unless teams.find_index(team) % 2 == 0}", "data-toggle" => "modal", :href => "#teamModal", :role => "button", "data-backdrop" => "false", ng_click: "fillModal(#{team.to_json}, #{team.players.to_json})" }
+        - if team.picture_url.nil?
+          %img{src: "assets/pads.jpg" }
+        - else
+          %img{src: team.picture_url(:thumb) }
         %h2= team.name
-        %label{:for  => "picture"} Team Picture:
-        %img{src: team.picture_url(:thumb) }
-        %br
+      %br
+      %br
+
 #jTweetsAnywhereEndlessScrollingSample      
 
   %a.btn{"data-toggle" => "modal", :href => "#teamNewModal", :role => "button", "data-backdrop" => "false"}New team
@@ -13,8 +17,8 @@
 #teamModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
   .modal-header
     %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-    %h2.teamName
     %img.teamImage
+    %h2.teamName
   .modal-body
     .player
       %img.image
