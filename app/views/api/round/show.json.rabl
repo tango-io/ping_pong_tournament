@@ -25,10 +25,10 @@ child @champion => :champion do
     attributes :user_account, :type_account, :picture_url
   end
   node :picture_url, :object_root => false do | team |
-    if team.picture.thumb.url.nil?
+    if team.picture.url.nil?
       '/assets/pads.jpg'
     else
-      team.picture.thumb.url
+      team.picture.url
     end
   end
 end
