@@ -1,6 +1,14 @@
+@import screen
+
++layout(5)
+  #content
+    +container
++at-breakpoint($mobile)
+  +layout(12)
+    #content
+      +container
+
 .rounds
-  h1
-    padding-left: 150px
   h1.final_match
     width: 75%
     margin: auto
@@ -8,10 +16,11 @@
 
 
   ul.round_matches
+    clear: both
     background: #c7c7c7
     border-bottom: 5px solid #ffb400
-    width: 70%
-    margin-left: 150px
+    //width: 70%
+    //margin-left: 150px
     &.final_match
       width: 75%
       margin: auto
@@ -22,6 +31,7 @@
       background: #fff
   
     li.matches
+      clear: both
       display: block
       font-weight: bold
       list-style: none
@@ -30,10 +40,11 @@
   
       .match
         overflow: hidden
+        padding: 5px 0
 
         .teams
           float: left
-          width: 40%
+          //width: 40%
         .score_board
           display: inline
           .ng-scope.ng-binding
@@ -55,7 +66,7 @@
       .match_members
       img
         width: 60px
-        height: 60px
+        padding-top: 7px
         &.champ
           width: 150px
           height: 150px
@@ -78,3 +89,46 @@
   
       .set
         display: inline
+
+.player img
+  width: 80px
+  height: 80px
+
+.btn
+  padding: 2px 10px !important
+
+span p
+  position: relative
+  bottom: 18px
+  margin-left: 10px
+
+.rounds .btn
+  margin-bottom: 5px
+
+.next
+  float: right
+
+h1#round
+  +span-columns(6,12)
+h3.set
+  +span-columns(2,12)
+  padding-top: 40px
+h3.last
+  +span-columns(2 omega,12) 
+  padding-top: 40px
+
+.match
+  .teams
+    +span-columns(6,12)
+  .sets
+    text-align: center
+    margin-top: 30px
+    +span-columns(2,12)
+  .sets:nth-of-type(3)
+    +span-columns(2 omega, 12)
+  .set_score:nth-of-type(2)
+    margin-top: 50px
+
+.table-header
+  h3
+    text-align: center
