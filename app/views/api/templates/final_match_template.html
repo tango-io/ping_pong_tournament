@@ -1,70 +1,74 @@
-<div ng-controller="RoundController">
-  Final Match
+<div class="rounds" ng-controller="RoundController">
+  <h1>Final Match</h1>
   <div ng-repeat="match in matches" ng-class="match.pair">
-    <ul>
-      <li>
-      <div class="ng-cloak">
-        <div ng-hide="match.empty" ng-repeat="team in match.teams" ng-class="{'second': $index, 'first': !$index }" ng-click="showTeam(team.id)">
-          <span>
-            <img src="{{team.picture_url}}"/>
-          </span>
-          <span>
-            {{team.name}}
-          </span>
+    <ul class="round_matches">
+      <li class="matches">
+      <div class="ng-cloak match">
+        <div class="teams">
+          <div class="match_members" ng-hide="match.empty" ng-repeat="team in match.teams" ng-class="{'second': $index, 'first': !$index }">
+            <span>
+              <img src="{{team.picture_url}}"/>
+            </span>
+            <span>
+              <p>{{team.name}}</p>
+            </span>
+          </div>
+          <div ng-show="match.empty">
+            No teams available
+          </div>
         </div>
-        <div ng-show="match.empty">
-          No teams available
-        </div>
-      </div>
-    <br>
-    <div class="score_board">
-      <div class="sets" ng-repeat="set in match.match_sets">
-        Set {{$index+1}}
-        <div class="set_score" ng-repeat="score in set.scores">
-          <% unless current_user.nil? %>
-          <span inputdisplay class="score">
-          <% else %>
-          <span class="score">
-          <% end %>
-            {{score.total}}
-          </span>
-          <div class="score_input" style="display: none;">
-            <input type="text" ng-model="score.total"/>
-            <% unless current_user.nil? %>
-            <button inputhide a="{{score.total}}" ng-click="updateScore(score.id, score.total)">Done</button>
-            <% else %>
-            <button a="{{score.total}}" ng-click="updateScore(score.id, score.total)">Done</button>
-            <% end %>
+        <br>
+        <div class="score_board">
+          <div class="sets" ng-repeat="set in match.match_sets">
+            Set {{$index+1}}
+            <div class="set_score" ng-repeat="score in set.scores">
+              <% unless current_user.nil? %>
+              <span inputdisplay class="score">
+                <% else %>
+                <span class="score">
+                  <% end %>
+                  {{score.total}}
+                </span>
+                <div class="score_input" style="display: none;">
+                  <input type="text" ng-model="score.total"/>
+                  <% unless current_user.nil? %>
+                  <button inputhide a="{{score.total}}" ng-click="updateScore(score.id, score.total)">Done</button>
+                  <% else %>
+                  <button a="{{score.total}}" ng-click="updateScore(score.id, score.total)">Done</button>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ng-cloak">
+            <div ng-hide="match.winner">
+              <span>
+                <img src="{{match.champion.picture_url}}"/>
+              </span>
+              <span>
+                This is the champion
+                {{match.champion.name}}
+              </span>
+              <ul>
+                <li ng-repeat="player in match.champion.players">
+                <span>
+                  <img src="{{player.picture_url}}"/>
+                </span>
+                <span>
+                  {{player.user_account}}
+                </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div ng-show="match.winner">
+            <img src="/assets/pads.jpg"/>
+            There is no champion, yet!
           </div>
         </div>
       </div>
       </li>
     </ul>
-    <div class="ng-cloak">
-      <div ng-hide="match.winner">
-        <span>
-            <img src="{{match.champion.picture_url}}"/>
-        </span>
-        <span>
-          This is the champion
-          {{match.champion.name}}
-        </span>
-        <ul>
-          <li ng-repeat="player in match.champion.players">
-          <span>
-            <img src="{{player.picture_url}}"/>
-          </span>
-          <span>
-            {{player.user_account}}
-          </span>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div ng-show="match.winner">
-      <img src="/assets/pads.jpg"/>
-      There is no champion, yet!
-    </div>
   </div>
   <button ng-click="previousMatch(round)">Previous round</button>
 </div>
