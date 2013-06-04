@@ -67,14 +67,14 @@
               </ul>
             </div>
           </div>
-          <div ng-show="match.winner">
+          <div class="no-champ" ng-show="match.winner">
             <img src="/assets/pads.jpg"/>
-            There is no champion, yet!
+            <p>There is no champion, yet!<p>
           </div>
         </div>
       </div>
       </li>
     </ul>
-    <button ng-click="previousMatch(round)">Previous round</button>
+    <button class="btn default pretty" ng-click="previousMatch(round)">Previous round</button>
   </div>
 </div>

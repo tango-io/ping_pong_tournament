@@ -33,49 +33,9 @@
 
 #teamNewModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabeladsda", :role => "dialog", :tabindex => "-1"}
   .modal-header
-    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %button.pretty.default.btn.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
     %h3.teamName
   .modal-body
-    = stylesheet_link_tag "teams/new"
-    %form{ :action => '/api/teams', :method => "post", enctype: "multipart/form-data" }
-      %fieldset
-        %ul
-
-          .team
-
-            .picture
-              =image_tag 'pads.jpg', class: 'image rounded'
-            .info
-              %li.prepend.field
-                %label.adjoined{:for  => "name"} Name
-                %input.xwide.text.input{:type => "text", :name => "team[name]", :class => "text"}
-              %li.prepend.field
-                %label.adjoined{:for  => "picture"} Picture
-                %input.xwide.text.input{:type => "file", :name => "team[picture]", :class => "text"}
-
-          .players
-          
-            .player1
-              %li.prepend.append.double.field
-                %input.wide.text.input{:type => "text", :name => "team[players_attributes][player1][email]", :class => "email", :placeholder => 'Email'}
-                %input.wide.text.input{:type => "text", :name => "team[players_attributes][player1][user_account]", :class => "user_account", :placeholder => '@twitter or github username'}
-              %li.last.field
-                .picker
-                  %select{:name => "team[players_attributes][player1][type_account]"}
-                    %option{value: "twitter" }= "Twitter"
-                    %option{value: "github"  }= "Github"
-
-            .player2
-              %li.prepend.append.double.field
-                %input.wide.text.input{:type => "text", :name => "team[players_attributes][player2][email]", :class => "email", :placeholder => 'Email'}
-                %input.wide.text.input{:type => "text", :name => "team[players_attributes][player2][user_account]", :class => "user_account", :placeholder => '@twitter or github username'}
-              %li.last.field
-                .picker
-                  %select{:name => "team[players_attributes][player2][type_account]"}
-                    %option{value: "twitter" }= "Twitter"
-                    %option{value: "github"  }= "Github"
-        .pretty.medium.default.btn.register-btn
-          %input{:type => "submit", :value => "Send", :class => "button"}
+    =render 'new'
   .modal-footer
-    %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
-
+    %button.pretty.default.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
