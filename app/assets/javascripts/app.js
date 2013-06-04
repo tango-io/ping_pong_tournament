@@ -20,7 +20,8 @@ App.config(['$routeProvider', function($routeProvider){
   });
 
   $('#jTweetsAnywhereEndlessScrollingSample').jTweetsAnywhere({
-    username: 'magmaconf',
+    username: '#tangopong',
+    searchParams: ['q=tangopong'],
     count: 10,
     showTweetFeed: {
       showProfileImages: true,
