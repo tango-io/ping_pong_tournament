@@ -39,6 +39,10 @@ App.config(['$routeProvider', function($routeProvider){
     }
   });
 
+  if ($('#flash_notice').size() > 0){
+    $("a.btn").click()
+  }
+
 }]);
 
 $(document).on('ready page:load', function(){
