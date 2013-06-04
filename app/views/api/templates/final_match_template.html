@@ -46,29 +46,12 @@
           </div>
           <div class="ng-cloak">
             <div class="winner_container" ng-hide="match.winner">
-              <div class="title">
-                <p>This is the champion</p>
-              </div>
               <div class="champ_img">
                 <span>
-                  <img class="champ" ng-src="{{match.champion.picture_url}}"/>
+                  <img class="champ" src="/assets/magma-cup.png"/>
                 </span>
               </div>
-              <div class="champ_name"> 
-                <p>{{match.champion.name}}</p>
-              </div>
-              <ul>
-                <li class="champ_player" ng-repeat="player in match.champion.players">
-                <span>
-                  <img ng-src="{{player.picture_url}}"/>
-                </span>
-                <br>
-                <span>
-                  <a href="http://www.{{player.type_account}}.com/{{player.user_account}}">{{player.user_account}}</a>
-                </span>
-                </li>
-              </ul>
-            </div>
+           </div>
           </div>
           <div class="no-champ" ng-show="match.winner">
             <img src="/assets/pads.jpg"/>
