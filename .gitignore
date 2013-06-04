@@ -1,6 +1,6 @@
 /.bundle
 /log/*.log
-/tmp
+/tmp/*
 *.DS_Store
 .powrc
 config/*.local.yml
