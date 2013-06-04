@@ -20,9 +20,9 @@ App.config(['$routeProvider', function($routeProvider){
   });
 
   $('#jTweetsAnywhereEndlessScrollingSample').jTweetsAnywhere({
-    username: '#tangopong',
-    searchParams: ['q=tangopong'],
-    count: 10,
+    username: '#magmapong',
+    searchParams: ['q=magmapong'],
+    count: 2,
     showTweetFeed: {
       showProfileImages: true,
       showUserScreenNames: true,
