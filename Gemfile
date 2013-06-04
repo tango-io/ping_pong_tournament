@@ -21,6 +21,7 @@ gem 'devise', '~> 3.0.0.rc'
 gem 'mini_magick'
 gem "carrierwave"
 gem 'gumby-framework'
+gem 'puma'
 
 group :development do
   gem 'pry'
@@ -36,3 +37,4 @@ end
 group :doc do
   gem 'sdoc', require: false
 end
+
