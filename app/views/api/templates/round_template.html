@@ -11,7 +11,7 @@
           </span>
           <% end %>
           <span ng-click="fillModal(team, team.players)" href="#teamModal" data-toggle="modal">
-            <img src="{{team.picture_url}}"/>
+            <img ng-src="{{team.picture_url}}"/>
             <p>{{team.name}}</p>
           </span>
         </div>

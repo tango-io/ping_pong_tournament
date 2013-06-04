@@ -40,3 +40,7 @@ App.config(['$routeProvider', function($routeProvider){
   });
 
 }]);
+
+$(document).on('ready page:load', function(){
+  angular.bootstrap(document, ['PingPong']);
+});

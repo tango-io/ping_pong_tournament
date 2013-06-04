@@ -7,7 +7,7 @@
         <div class="teams">
           <div class="match_members" ng-hide="match.empty" ng-repeat="team in match.teams" ng-class="{'second': $index, 'first': !$index }">
             <span>
-              <img src="{{team.picture_url}}"/>
+              <img ng-src="{{team.picture_url}}"/>
             </span>
             <span>
               <p>{{team.name}}</p>
@@ -50,14 +50,14 @@
               </div>
               <div class="champ_img">
                 <span>
-                  <img class="champ" src="{{match.champion.picture_url}}"/>
+                  <img class="champ" ng-src="{{match.champion.picture_url}}"/>
                 </span>
               </div>
               <br>
               <ul>
                 <li class="champ_player" ng-repeat="player in match.champion.players">
                 <span>
-                  <img src="{{player.picture_url}}"/>
+                  <img ng-src="{{player.picture_url}}"/>
                 </span>
                 <br>
                 <span>
