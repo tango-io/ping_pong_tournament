@@ -24,7 +24,9 @@
             =link_to 'Scores', scores_path
           %li
             =link_to 'Rules', 'application#rules'
-    
+      - flash.each do |name, msg|
+        = content_tag :div, msg, :id => "flash_#{name}"
+
     #content
       = yield
 

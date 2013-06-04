@@ -20,6 +20,7 @@ class Api::TeamsController < ApiController
         match.start if match.teams.count == 2
         redirect_to "#/round/1"
     else
+      flash[:notice] = "Your team was not able to be created"
       redirect_to :back
     end
   end
