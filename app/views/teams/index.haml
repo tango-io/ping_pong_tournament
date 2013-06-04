@@ -35,6 +35,9 @@
   .modal-header
     %button.pretty.default.btn.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
     %h3.teamName
+    - flash.each do |name, msg|
+      = content_tag :div, msg, :id => "flash_notice"
+      %br
   .modal-body
     =render 'new'
   .modal-footer
