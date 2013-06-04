@@ -24,6 +24,8 @@
             =link_to 'Scores', scores_path
           %li
             =link_to 'Rules', 'Rules.pdf'
+        - unless flash[:top_teams].nil?
+          = content_tag :div, flash[:top_teams], :id => "flash_notice"
 
     #content
       = yield

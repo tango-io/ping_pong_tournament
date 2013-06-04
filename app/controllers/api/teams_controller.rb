@@ -15,13 +15,18 @@ class Api::TeamsController < ApiController
   def create
     match = MatchRound.round_of_16.available_matches.sample
     team = Team.new(team_params)
-    if team.valid_team? && team.save
-        match.teams << team
-        match.start if match.teams.count == 2
-        redirect_to "#/round/1"
+    if (team.valid_team? && Team.count < 16)
+      team.save
+      match.teams << team
+      match.start if match.teams.count == 2
+      redirect_to "#/round/1"
     else
-      flash[:player1_errors] = "Player 1 was has not a valid account" if team.players[0].is_valid? == false
-      flash[:player2_errors] = "Player 2 was has not a valid account" if team.players[1].is_valid? == false
+      if Team.count == 16
+        flash[:top_teams] = "There are 16 teams already, you cannot create another one"
+      else
+        flash[:player1_errors] = "Player 1 was has not a valid account" if team.players[0].is_valid? == false
+        flash[:player2_errors] = "Player 2 was has not a valid account" if team.players[1].is_valid? == false
+      end
       redirect_to :back
     end
   end

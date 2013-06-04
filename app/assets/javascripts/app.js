@@ -43,6 +43,10 @@ App.config(['$routeProvider', function($routeProvider){
   if ($('#flash_notice').size() > 0){
     $("a.btn").click()
   }
+  if ($('.teams li').size()== 16){
+    $('a[href^="#teamNewModal"]').remove()
+    $("#teamNewModal").remove()
+  }
 
 }]);
 
