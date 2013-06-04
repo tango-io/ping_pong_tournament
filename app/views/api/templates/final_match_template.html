@@ -1,5 +1,10 @@
 <div class="rounds" ng-controller="RoundController">
-  <h1 class="final_match">Final Match</h1>
+  <div class="table-header">
+    <h1 id="round">Final match</h1>
+    <h3 class="set">Set 1</h3>
+    <h3 class="set">Set 2</h3>
+    <h3 class="last">Set 3</h3>
+  </div>
   <div ng-repeat="match in matches" ng-class="match.pair">
     <ul class="round_matches final_match">
       <li class="matches">
@@ -20,7 +25,6 @@
         <br>
         <div class="score_board">
           <div class="sets" ng-repeat="set in match.match_sets">
-            Set {{$index+1}}
             <div class="set_score" ng-repeat="score in set.scores">
               <% unless current_user.nil? %>
               <span inputdisplay class="score">
@@ -45,15 +49,14 @@
               <div class="title">
                 <p>This is the champion</p>
               </div>
-              <div class="champ_name"> 
-                <p>{{match.champion.name}}</p>
-              </div>
               <div class="champ_img">
                 <span>
                   <img class="champ" ng-src="{{match.champion.picture_url}}"/>
                 </span>
               </div>
-              <br>
+              <div class="champ_name"> 
+                <p>{{match.champion.name}}</p>
+              </div>
               <ul>
                 <li class="champ_player" ng-repeat="player in match.champion.players">
                 <span>

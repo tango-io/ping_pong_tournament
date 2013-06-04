@@ -69,9 +69,12 @@ App.controller('RoundController', ['$scope', '$http', '$location', '$routeParams
 App.directive('inputdisplay', function(){
   return function(scope, element, attr){
     element.bind('click', function(){
+      $('.shown').attr('style', 'margin-top: 50px;');
       var target = element.next('.score_input');
+      target.parent().next().addClass('shown');
       $('.score_input').attr('style', 'display: none');
       $('.score').attr('style', 'display: block');
+      element.parent().next().attr('style', 'margin-top: 12px;');
       element.attr('style', 'display: none;');
       target.attr('style', 'display: block;');
     })
@@ -82,6 +85,7 @@ App.directive('inputhide', function(){
   return function(scope, element, attr){
     element.bind('click', function(){
       var target = element.parent();
+      target.parent().next().attr('style', 'margin-top: 50px;');
       target.attr('style', 'display: none;');
       $('.score').attr('style', 'display: block');
     })

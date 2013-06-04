@@ -36,6 +36,12 @@
           +span-columns(9,12)
         .score_board
           display: inline
+
+          .score_input
+            input
+              display: block
+              margin-left: 48px
+
           .ng-scope.ng-binding
             display: inline-block
             font-size: 24px
@@ -61,9 +67,11 @@
           height: 150px
   
         &.delete
-          width: 35px
-          height: 40px
-          padding-bottom: 10px
+          width: 22px
+          height: 20px
+          padding-top: 0
+          margin-bottom: 18px
+
       .champ_img, .champ_name
         width: 50%
         margin: auto
@@ -130,3 +138,11 @@ ul.teams li
 .teams 
   a.pretty
     margin-top: 5px !important
+
+.winner_container
+  text-align: center
+  padding-top: 35px
+  clear: both !important
+  ul li
+    display: inline-block
+    padding: 0 10px
