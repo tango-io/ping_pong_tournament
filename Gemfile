@@ -21,6 +21,7 @@ gem 'devise', '~> 3.0.0.rc'
 gem 'mini_magick'
 gem "carrierwave"
 gem 'gumby-framework'
+gem 'puma'
 
 group :development do
   gem 'pry'
@@ -35,9 +36,4 @@ end
 
 group :doc do
   gem 'sdoc', require: false
-end
-
-group :heroku do
-  gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
-  gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
 end
