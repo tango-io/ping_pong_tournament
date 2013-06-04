@@ -12,7 +12,7 @@
         <div class="match_members" ng-hide="match.empty" ng-repeat="team in match.teams" ng-class="{'second': $index, 'first': !$index }">
           <% unless current_user.nil? %>
           <span ng-hide="round > 1" ng-click="deleteTeam(team.id)">
-            <img class="delete" src="/assets/delete.ico" />
+            <img class="delete" src="<%= image_path('delete.ico') %>" />
           </span>
           <% end %>
           <span ng-click="fillModal(team, team.players)" href="#teamModal" data-toggle="modal">
