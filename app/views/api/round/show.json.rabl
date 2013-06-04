@@ -7,7 +7,7 @@ child :teams, :object_root => false do
   end
   node :picture_url, :object_root => false do | team |
     if team.picture.thumb.url.nil?
-      '/assets/pads.jpg'
+      image_path('pads.png')
     else
       team.picture.thumb.url
     end
