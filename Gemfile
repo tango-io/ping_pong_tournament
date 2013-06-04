@@ -16,7 +16,7 @@ gem 'angularjs-rails'
 gem 'decent_exposure'
 gem 'rabl'
 gem 'twitter'
-gem "github_api"
+gem "octokit"
 gem 'devise', '~> 3.0.0.rc'
 gem 'mini_magick'
 gem "carrierwave"
