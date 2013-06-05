@@ -12,7 +12,7 @@ class Player < ActiveRecord::Base
   end
 
   def set_profile_image
-    self.picture_url = type_account == 'twitter' ? (Twitter.users(user_account).first.profile_image_url) : (Octokit.user "MarcoGuzmanR").avatar_url
+    self.picture_url = type_account == 'twitter' ? (Twitter.users(user_account).first.profile_image_url) : (Octokit.user user_account).avatar_url
   end
 
 end
