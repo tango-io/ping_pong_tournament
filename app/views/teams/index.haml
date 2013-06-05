@@ -12,24 +12,23 @@
 / Modal
 #teamModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
   .modal-header
-    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %button.pretty.default.btn.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
     %img.teamImage
     %h2.teamName
   .modal-body
     .player
       %img.image
-      %h2
+      %h3
         %a.user_account
-      %h4.email
+      %h6.email
     .player
       %img.image
-      %h2
+      %h3
         %a.user_account
-      %h4.email
+      %h6.email
 
   .modal-footer
-    %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
-
+    %button.pretty.default.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
 
 #teamNewModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabeladsda", :role => "dialog", :tabindex => "-1"}
   .modal-header
