@@ -63,11 +63,23 @@ header
   min-height: 400px
 
 footer
-  text-align: center
   border-top: 2px solid #c7c7c7 
 
   p
-    padding-bottom: 5px
+    text-align: center
+    font-size: 14px
+    margin-bottom: 5px
+    padding-bottom: 0
+    +at-breakpoint($mobile)
+      text-align: center
+      font-size: initial
+      margin-bottom: 13px
+      padding-bottom: 5px
+
+.jta-tweet-list-controls
+  display: none
+  +at-breakpoint($mobile)
+    display: block
 
 ul.teams
   margin: auto
