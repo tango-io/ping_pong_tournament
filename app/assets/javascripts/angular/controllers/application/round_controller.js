@@ -66,7 +66,6 @@ App.controller('RoundController', ['$scope', '$http', '$location', '$routeParams
     $team   = $("#teamModal .teamName");
     $img    = $("#teamModal .teamImage");
     $player = $("#teamModal .player");
-
     $team.text(team.name);
     $img.attr('src', team.picture_url);
     $player.each(function(){
@@ -77,6 +76,7 @@ App.controller('RoundController', ['$scope', '$http', '$location', '$routeParams
       }else {
         $(this).find(".user_account").attr('href', "https://www.github.com/"+player.user_account);
       }
+      $(this).find(".email").text(player.email);
       $(this).find('.image').attr('src', player.picture_url);
     });
   };
