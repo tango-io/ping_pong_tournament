@@ -59,10 +59,12 @@
             padding-left: 12%
 
 
-      .match_members
-      img
+      .match_members img
+        display: none
         width: 60px
         padding-top: 7px
+        +at-breakpoint($mobile)
+          display: inline-block
         &.champ
           width: 355px
           height: 222px
@@ -100,8 +102,11 @@
 span, .no-champ
   p
     position: relative
-    bottom: 18px
-    margin-left: 10px
+    bottom: 0
+    margin-left: 0
+    +at-breakpoint($mobile)
+      margin-left: 10px
+      bottom: 18px
 
 .no-champ
   clear: both
@@ -116,10 +121,14 @@ h1#round
   +span-columns(6,12)
 h3.set
   +span-columns(2,12)
-  padding-top: 40px
+  padding-top: 2px
+  +at-breakpoint($mobile)
+    padding-top: 40px
 h3.last
   +span-columns(2 omega,12) 
-  padding-top: 40px
+  padding-top: 2px
+  +at-breakpoint($mobile)
+    padding-top: 40px
 
 .match
   .teams
@@ -156,6 +165,16 @@ ul.teams li
     padding: 0 10px
 
 .winner_tag
+  padding-top: 0
+  position: relative
+  left: 17px
+  bottom: 50px
   float: right
-  padding-top: 30px
   color: #2853DB
+  +at-breakpoint($mobile)
+    left: 0
+    bottom: 0
+    padding-top: 30px
+
+img .champ_img
+  display: block !important

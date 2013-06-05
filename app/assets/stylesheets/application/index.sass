@@ -63,11 +63,23 @@ header
   min-height: 400px
 
 footer
-  text-align: center
   border-top: 2px solid #c7c7c7 
 
   p
-    padding-bottom: 5px
+    text-align: center
+    font-size: 14px
+    margin-bottom: 5px
+    padding-bottom: 0
+    +at-breakpoint($mobile)
+      text-align: center
+      font-size: initial
+      margin-bottom: 13px
+      padding-bottom: 5px
+
+.jta-tweet-list-controls
+  display: none
+  +at-breakpoint($mobile)
+    display: block
 
 ul.teams
   margin: auto
@@ -83,7 +95,12 @@ li.btn
     float: left
     margin: 0 0.5%
   h2
-    margin-top: 0.5%
+    font-size: 22px
+    margin-top: 6%
+    +at-breakpoint($mobile)
+      margin-top: 0.5%
+      font-size: 2.625rem
+
   img
     width: 150px
     height: 150px
@@ -107,3 +124,8 @@ li.btn
   .jta-tweet-list
     height: 100px
     overflow: auto
+
+.auth
+  font-size: 12px
+  +at-breakpoint($mobile)
+    font-size: initial
