@@ -3,7 +3,7 @@
     - teams.each do |team|
       %li.btn{:class => "#{"white" unless teams.find_index(team) % 2 == 0}", "data-toggle" => "modal", :href => "#teamModal", :role => "button", "data-backdrop" => "false", ng_click: "fillModal(#{team.to_json}, #{team.players.to_json})" }
         - if team.picture_url.nil?
-          %img{src: "assets/pads.jpg" }
+          = image_tag('pads.jpg')
         - else
           %img{src: team.picture_url(:thumb) }
         %h2= team.name
