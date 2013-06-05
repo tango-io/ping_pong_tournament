@@ -1,5 +1,6 @@
 class Api::TeamsController < ApiController
   skip_before_filter :verify_authenticity_token
+  skip_before_filter :authenticate_user!
   before_filter :fix_params_from_for, only: :create
 
   expose(:teams)
@@ -19,7 +20,7 @@ class Api::TeamsController < ApiController
       team.save
       match.teams << team
       match.start if match.teams.count == 2
-      redirect_to "/scores#/round/1"
+      redirect_to root_path
     else
       if Team.count == 16
         flash[:top_teams] = "There are 16 teams already, you cannot create another one"
