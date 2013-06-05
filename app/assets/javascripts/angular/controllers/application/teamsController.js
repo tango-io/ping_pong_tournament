@@ -6,7 +6,7 @@ App.controller('teamsController', ['$scope', function($scope){
     $player = $("#teamModal .player");
 
     $team.text(team.name);
-    (team.picture.url === null) ? ($img.attr('src', '/assets/pads.jpg')) : ($img.attr('src', team.picture.thumb.url));
+    (team.picture.url === null) ? ($img.attr('src', '/pads.jpg')) : ($img.attr('src', team.picture.thumb.url));
     $player.each(function(){
       player = players[$(this).index()];
       $(this).find(".user_account").text(player.user_account);
