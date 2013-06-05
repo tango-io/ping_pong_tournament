@@ -15,6 +15,7 @@ class Team < ActiveRecord::Base
 
   def valid_team?
     valid = []
+    valid << false if self.name == ""
     players.each do |player|
       valid << player.is_valid?
     end

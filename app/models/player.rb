@@ -8,6 +8,7 @@ class Player < ActiveRecord::Base
 
   def is_valid?
     account = type_account == 'twitter' ? (Twitter.users(self.user_account) rescue nil) : (Octokit.user user_account rescue nil)
+    account = nil if self.email == ""
     return account.nil? ? false : true
   end
 
