@@ -23,9 +23,11 @@ class Api::TeamsController < ApiController
     else
       if Team.count == 16
         flash[:top_teams] = "There are 16 teams already, you cannot create another one"
+      elsif team.name == ""
+        flash[:team] = "You didn't specify a name for your Team" 
       else
-        flash[:player1_errors] = "Player 1 was has not a valid account" if team.players[0].is_valid? == false
-        flash[:player2_errors] = "Player 2 was has not a valid account" if team.players[1].is_valid? == false
+        flash[:player1_errors] = "Player 1 was has not a valid account or email" if team.players[0].is_valid? == false || team.players[0].name.nil?
+        flash[:player2_errors] = "Player 2 was has not a valid account or email" if team.players[1].is_valid? == false || team.players[1].name.nil?
       end
       redirect_to :back
     end
