@@ -83,7 +83,12 @@ li.btn
     float: left
     margin: 0 0.5%
   h2
-    margin-top: 0.5%
+    font-size: 22px
+    margin-top: 6%
+    +at-breakpoint($mobile)
+      margin-top: 0.5%
+      font-size: 2.625rem
+
   img
     width: 150px
     height: 150px
@@ -107,3 +112,8 @@ li.btn
   .jta-tweet-list
     height: 100px
     overflow: auto
+
+.auth
+  font-size: 12px
+  +at-breakpoint($mobile)
+    font-size: initial
