@@ -3,7 +3,7 @@ attributes :id, :match_number
 child :teams, :object_root => false do
   attributes :id, :name
   child :players, :object_root => false do | team |
-    attributes :user_account, :type_account, :picture_url
+    attributes :user_account, :email, :type_account, :picture_url
   end
   node :picture_url, :object_root => false do | team |
     if team.picture.thumb.url.nil?
