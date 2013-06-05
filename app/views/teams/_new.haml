@@ -1,4 +1,5 @@
 =stylesheet_link_tag "teams"
+= javascript_include_tag "upload_image_preview"
 #renderedModal
   %form{ :action => '/api/teams', :method => "post", enctype: "multipart/form-data" }
     %fieldset
@@ -7,14 +8,14 @@
         .team
   
           .picture
-            =image_tag 'pads.jpg', class: 'image rounded'
+            =image_tag 'pads.jpg', class: 'image rounded preview_target'
           .info
             %li.prepend.field
               %label.adjoined{:for  => "name"} Name
               %input.xwide.text.input{:type => "text", :name => "team[name]", :class => "text"}
             %li.prepend.field
               %label.adjoined{:for  => "picture"} Picture
-              %input.xwide.text.input{:type => "file", :name => "team[picture]", :class => "text"}
+              %input.xwide.text.input{:type => "file", :name => "team[picture]", :class => "text picture_to_render"}
   
         .players
         
@@ -39,3 +40,4 @@
                   %option{value: "github"  }= "Github"
       .pretty.medium.default.btn.register-btn
         %input{:type => "submit", :value => "Send", :class => "button"}
+
