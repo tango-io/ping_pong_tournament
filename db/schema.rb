@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20130601220853) do
   end
 
   create_table "scores", force: true do |t|
-    t.integer  "total",        default: 0
+    t.integer  "total"
     t.integer  "position"
     t.integer  "match_set_id"
     t.integer  "team_id"

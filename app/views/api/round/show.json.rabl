@@ -17,6 +17,7 @@ child :sets, :object_root => false do
   attributes :id, :set_number
   child :scores, :object_root => false do
     attributes :id, :total, :team_id
+    node(:visible) { |score| true if score.total != nil }
   end
 end
 child @champion => :champion do

@@ -8,7 +8,7 @@ App.controller('RoundController', ['$scope', '$http', '$location', '$routeParams
       angular.forEach(data, function(m, index){
         m.match.pair = index%2 === 0 ? 'gray' : 'white';
         m.match.empty = m.match.teams.length === 0 ? true : false;
-        m.match.winner = m.match.champion === null ? true : false;
+        m.match.winner = m.match.champion === null ? false : true;
         $scope.matches.push(m.match);
       });
     });
@@ -18,12 +18,28 @@ App.controller('RoundController', ['$scope', '$http', '$location', '$routeParams
 
   $scope.deleteTeam = function(team_id, match_id){
     $http.post('api/match/'+match_id+'/clear_space');
-    $http.delete('api/teams/'+team_id);
-    $scope.showRound();
+    $http.delete('api/teams/'+team_id).success(function(){
+      $scope.showRound();
+    });
   };
 
-  $scope.updateScore = function(id, score){
-    $http.put('api/score/'+id, { total: score });
+  $scope.updateScore = function(set){
+    $http.post('api/scores/update', { set: set });
+  };
+
+  $scope.renderWinner = function(){
+    winner = [];
+    angular.forEach($scope.matches[0].match_sets, function(set){
+      if(set.scores[0].total != null || set.scores[1].total != null){
+        winner.push(true);
+      } else {
+        winner.push(false);
+      }
+    });
+
+    if(winner[0] === true && winner[1] === true && winner[2] === true){
+      $scope.showRound();
+    }
   };
 
   $scope.showTeam = function(id){
@@ -66,28 +82,12 @@ App.controller('RoundController', ['$scope', '$http', '$location', '$routeParams
   };
 }]);
 
-App.directive('inputdisplay', function(){
+App.directive('scoreinput', function(){
   return function(scope, element, attr){
     element.bind('click', function(){
-      $('.shown').attr('style', 'margin-top: 50px;');
-      var target = element.next('.score_input');
-      target.parent().next().addClass('shown');
-      $('.score_input').attr('style', 'display: none');
-      $('.score').attr('style', 'display: block');
-      element.parent().next().attr('style', 'margin-top: 12px;');
+      element.siblings().children('span').attr('style', 'display: block; margin-top: 20px;');
+      element.siblings().children().children('input').attr('style', 'display: none;');
       element.attr('style', 'display: none;');
-      target.attr('style', 'display: block;');
-    })
-  }
-});
-
-App.directive('inputhide', function(){
-  return function(scope, element, attr){
-    element.bind('click', function(){
-      var target = element.parent();
-      target.parent().next().attr('style', 'margin-top: 50px;');
-      target.attr('style', 'display: none;');
-      $('.score').attr('style', 'display: block');
-    })
+    });
   }
 });

@@ -17,50 +17,47 @@
             <span>
               <p>{{team.name}}</p>
             </span>
+            <span class="winner_tag" ng-show="team.id == matches[0].champion.id">
+              WINNER
+            </span>
           </div>
           <div ng-show="match.empty">
             No teams available
           </div>
         </div>
-        <br>
         <div class="score_board">
           <div class="sets" ng-repeat="set in match.match_sets">
             <div class="set_score" ng-repeat="score in set.scores">
               <% unless current_user.nil? %>
-              <span inputdisplay class="score">
-                <% else %>
-                <span class="score">
-                  <% end %>
-                  {{score.total}}
+                <span ng-show="score.visible" class="score" style="display: none;">
+                  {{score.total || 0}}
                 </span>
-                <div class="score_input" style="display: none;">
-                  <input type="text" ng-model="score.total"/>
-                  <% unless current_user.nil? %>
-                  <button inputhide a="{{score.total}}" ng-click="updateScore(score.id, score.total)">Done</button>
-                  <% else %>
-                  <button a="{{score.total}}" ng-click="updateScore(score.id, score.total)">Done</button>
-                  <% end %>
+                <div ng-hide="score.visible" class="score_input">
+                  <input type="text" ng-model="score.total" placeholder="0" />
                 </div>
+              <% else %>
+                <span class="score">
+                  {{score.total || 0}}
+                </span>
+              <% end %>
               </div>
+              <% unless current_user.nil? %>
+               <button scoreinput ng-hide="set.scores[0].visible" ng-click="updateScore(set); renderWinner()">Done</button>
+              <% end %>
             </div>
           </div>
           <div class="ng-cloak">
-            <div class="winner_container" ng-hide="match.winner">
+            <div class="winner_container" ng-show="match.winner">
               <div class="champ_img">
                 <span>
-                  <img class="champ" src="/assets/magma-cup.png"/>
+                  <img class="champ" src="<%= image_path('magma-cup.png') %>"/>
                 </span>
               </div>
            </div>
           </div>
-          <div class="no-champ" ng-show="match.winner">
-            <img src="/assets/pads.jpg"/>
-            <p>There is no champion, yet!<p>
-          </div>
         </div>
-      </div>
-      </li>
-    </ul>
-    <button class="btn default pretty" ng-click="previousMatch(round)">Previous round</button>
-  </div>
+    </div>
+    </li>
+  </ul>
+  <button class="btn default pretty" ng-click="previousMatch(round)">Previous round</button>
 </div>

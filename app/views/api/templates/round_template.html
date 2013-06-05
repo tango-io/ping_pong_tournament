@@ -11,9 +11,9 @@
       <div class="teams">
         <div class="match_members" ng-hide="match.empty" ng-repeat="team in match.teams" ng-class="{'second': $index, 'first': !$index }">
           <% unless current_user.nil? %>
-          <span ng-hide="round > 1" ng-click="deleteTeam(team.id)">
-            <img class="delete" src="<%= image_path('delete.ico') %>" />
-          </span>
+            <span ng-hide="round > 1" ng-click="deleteTeam(team.id)">
+              <img class="delete" src="<%= image_path('delete.ico') %>" />
+            </span>
           <% end %>
           <span ng-click="fillModal(team, team.players)" href="#teamModal" data-toggle="modal">
             <img ng-src="{{team.picture_url}}"/>
@@ -23,27 +23,23 @@
       </div>
       <div class="score_board">
         <div class="sets" ng-repeat="set in match.match_sets">
-          <!--Set {{$index+1}}-->
           <div class="set_score" ng-repeat="score in set.scores">
             <% unless current_user.nil? %>
-            <span inputdisplay class="score">
-              <% else %>
-              <span class="score">
-                <% end %>
-                {{score.total}}
+              <span ng-show="score.visible" class="score" style="display: none;">
+                {{score.total || 0}}
               </span>
-              <div class="score_input" style="display: none;">
-                <input type="text" ng-model="score.total"/>
-                <% unless current_user.nil? %>
-                <button inputhide a="{{score.total}}" ng-click="updateScore(score.id, score.total)">Done</button>
-                <% else %>
-                <button a="{{score.total}}" ng-click="updateScore(score.id, score.total)">Done</button>
-                <% end %>
+              <div ng-hide="score.visible" class="score_input">
+                <input type="text" ng-model="score.total" placeholder="0" />
               </div>
-            </div>
+            <% else %>
+              <span class="score">
+                {{score.total || 0}}
+              </span>
+            <% end %>
           </div>
-          <div class="match_members" ng-show="match.empty">
-            No teams available
+          <% unless current_user.nil? %>
+           <button scoreinput ng-hide="set.scores[0].visible" ng-click="updateScore(set)">Done</button>
+          <% end %>
           </div>
         </div>
         <div class="match_members" ng-show="match.empty">

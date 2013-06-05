@@ -1,22 +1,24 @@
 class Api::ScoreController < ApiController
   expose(:score)
 
-  def update
-    score = Score.find(params[:id])
-    set = score.match_set
-    match = set.match
-    score.update_attributes(total: params[:total])
-
-    if set.scores.first != 0 and set.scores.last != 0
-      set.set_winner
+  def set_score 
+    scores = params["set"]["scores"]
+    scores.each do | param |
+      score = Score.find(param["id"])
+      total = param["total"]
+      total = 0 if total == nil
+      score.update_attributes(total: total)
     end
+
+    set = MatchSet.find(params["set"]["id"])
+    match = set.match
+
+    set.set_winner
 
     match.match_winner if match.have_winner
 
-    if score.save
-      respond_to do | format |
-        format.json { render json: { status: 202 } }
-      end
+    respond_to do | format |
+      format.json { render json: { status: 202 } }
     end
   end
 end
